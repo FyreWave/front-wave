@@ -8,9 +8,23 @@
 
 .App {
 
-    @apply bg-slate-100
+    @apply bg-slate-100 ;
 
 
+}
+.regular-text {
+    @apply text-secondary-500
+}
+
+.regular-title{
+    @apply text-secondary-500  font-semibold}
+
+.big-title{
+    @apply text-secondary-500 text-3xl font-bold
+}
+
+h1,p{
+    color: red
 }
 
 .regular-button{

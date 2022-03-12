@@ -1,4 +1,5 @@
 import WavesComponent from "../components/WavesComponent";
+import DepositHistoryComponent from "../components/DepositHistoryComponent";
 
 function App() {
   const title = "Animal blog";
@@ -15,27 +16,18 @@ function App() {
             <div className="">
               <div className="Dashboard-tile h-40">
                 <div className="p-4">
-                  <h2>Total Savings:</h2>
+                  <h2 className="regular-title">Total Savings:</h2>
                   <h1 className="text-3xl "> 124,232,000</h1>
                 </div>
               </div>
               <div className="Dashboard-tile mt-4">
-                <h1 className="text-xl">Deposit History</h1>
-                <div>
-                  <h1>23 Mar</h1>
-                </div>
-                <div>
-                  <div>
-                    <h1>5322 **** **** 45</h1>
-                    <h1>Build House for mummy</h1>
-                  </div>
-                  <div>N23,654,000</div>
-                </div>
+                <h1 className="regular-title">Deposit History</h1>
+
+                <DepositHistoryComponent />
               </div>
             </div>
             <div className="Dashboard-tile">
               <div>
-                <h1 className="text-lg">Your waves</h1>
                 <WavesComponent />
               </div>
             </div>

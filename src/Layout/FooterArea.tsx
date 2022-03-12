@@ -1,6 +1,6 @@
 const FooterArea = () => {
   return (
-    <div className="px-4">
+    <div className="px-4 mt-10">
       <div className="border-t-2 h-[500px]">
         <div className="pt-4">
           <div className="grid grid-cols-3">

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Views/App";
-import "./Layout/styles/App.css";
+import "./styles/App.css";
 
 import SideBar from "./components/SideBar";
 import HeaderNavigation from "./Layout/HeaderNavigation";
@@ -18,9 +18,11 @@ ReactDOM.render(
           </div>
         </div>
         <div className="w-screen">
-          <div className="h-screen container mx-auto">
+          <div className=" container mx-auto">
             <HeaderNavigation />
-            <App />
+            <div className="px-6">
+              <App />
+            </div>
           </div>
         </div>
       </div>

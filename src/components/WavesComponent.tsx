@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import WaveList from "./WaveList";
+import { WavesDataType } from "../../types/models";
 
 const WavesComponent = () => {
   const [waves, setWaves] = useState([
@@ -12,13 +14,13 @@ const WavesComponent = () => {
       title: "Buy Car for Papa",
       goal: "12,000,000",
       date: "23/10/2022",
-      id: 1,
+      id: 2,
     },
     {
       title: "Estate Development",
       goal: "30,000,000",
       date: "01/11/2023",
-      id: 1,
+      id: 2,
     },
     {
       title: "My wedding",
@@ -32,32 +34,21 @@ const WavesComponent = () => {
       date: "04/11/2022",
       id: 1,
     },
-  ]);
+  ] as WavesDataType[]);
+
+  const handleDelete = (index: any) => {
+    const newWaves = waves.filter((wave, i) => i !== index);
+    setWaves(newWaves);
+    console.log(index);
+  };
+
+  useEffect(() => {
+    console.log("use effect ran", waves);
+  }, [waves]);
 
   return (
-    <div className="border-b-2 pb-2">
-      <div>
-        {waves.map((wave) => (
-          <div key={wave.id}>
-            <div className="border-b-2">
-              <div className="py-6">
-                <div className="flex justify-between">
-                  <div>
-                    <h1 className="text-lg">{wave.title}</h1>
-                    <p>{wave.goal}</p>
-                    <p>{wave.date}</p>
-                  </div>
-                  <div>
-                    <button className="regular-button">
-                      <i className="fa-solid fa-arrow-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="">
+      <WaveList waves={waves} title="All Waves" handleDelete={handleDelete} />
     </div>
   );
 };
