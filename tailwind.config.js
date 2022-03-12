@@ -3,30 +3,26 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    colors: {
-      current: "currentColor",
-      white: colors.white,
-      red: colors.red,
+    extend: {
+      colors: {
+        primary: {
+          100: "#E6FFE6",
+          200: "#00CC66",
 
-      slate: colors.slate,
-      gray: colors.gray,
+          500: "#00CC66",
 
-      primary: {
-        100: "#E6FFE6",
+          900: "#1f9b5e",
+        },
 
-        500: "#00CC66",
-
-        900: "#1f9b5e",
-      },
-
-      secondary: {
-        100: "#E6E6FF",
-        500: "#191745",
-        600: "#212045",
-        900: "#0E0E9F",
+        secondary: {
+          100: "#E6E6FF",
+          400: "#2b295b",
+          500: "#191745",
+          600: "#212045",
+          700: "#12122a",
+        },
       },
     },
-    extend: {},
   },
   plugins: [],
 };

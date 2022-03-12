@@ -2,6 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
 import WaveTile from "../components/waveComponents/WaveTile";
+import WaveUsers from "../components/waveComponents/WaveUsers";
 
 const WaveDetailsPage = () => {
   const { id } = useParams<RouteParamsType>();
@@ -28,11 +29,22 @@ const WaveDetailsPage = () => {
         {isLoading && <div>Loading...</div>}
         {isError && <div>Error</div>}
         {wave && (
-          <div className="bg-secondary-500 p-10">
-            <WaveTile wave={wave} />
-            <div>
-              <div>
-                <h1>Wave Users</h1>
+          <div>
+            <div className="grid md:grid-cols-2">
+              <div className="bg-white">
+                <div className="p-10">
+                  <h4 className="text-secondary-500 text-3xl">
+                    Wave Activities
+                  </h4>
+                </div>
+              </div>
+              <div className="bg-secondary-500 p-10">
+                <WaveTile wave={wave} />
+                <div>
+                  <div>
+                    <WaveUsers />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

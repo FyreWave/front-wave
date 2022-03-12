@@ -1,11 +1,13 @@
 import { useState } from "react";
 import NavigationLinks from "../components/NavigationLinks";
+import { useLocation } from "react-router-dom";
 
 const HeaderNavigation = () => {
   // let name = "Ezeh";
 
   const [name, setName] = useState("Ezeh");
   const [amount, setAmount] = useState(123456);
+  const location = useLocation();
 
   const handleClick = () => {
     setName("Xammmy");
@@ -41,6 +43,7 @@ const HeaderNavigation = () => {
           <h1 className=" big-title">
             Hello {name}, {amount}
           </h1>
+          <h1>{}</h1>
         </div>
       </nav>
     </div>
