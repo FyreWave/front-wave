@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { WavesDataType } from "../types/models";
 
 const useFetch = (url: string) => {
-  const [data, setData] = useState([] as WavesDataType[]);
+  const [data, setData] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
