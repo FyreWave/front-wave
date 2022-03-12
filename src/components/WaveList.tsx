@@ -1,4 +1,4 @@
-import { WavesDataType } from "../../types/models";
+import { WavesDataType } from "../types/models";
 
 const WaveList = (props: { waves: any; title: any; handleDelete: any }) => {
   const waves = props.waves;

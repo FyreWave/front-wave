@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import WaveList from "./WaveList";
-import { WavesDataType } from "../../types/models";
+import { WavesDataType } from "../types/models";
 
 const WavesComponent = () => {
   const [waves, setWaves] = useState([] as WavesDataType[]);
