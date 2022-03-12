@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const createWave = () => {
+const createWavePage = () => {
   // console.log(import.meta.env.DEV);
   // handle object
 
   //single input
   const [waveName, setWaveName] = useState("Buy car for Sam");
   const [waveAmount, setWaveAmount] = useState("2,000,000");
-  const [waveDate, setWaveDate] = useState("group");
+  const [waveDate, setWaveDate] = useState("");
 
   const [isPending, setIsPending] = useState(false);
 
   const history = useHistory();
 
-  const [waveType, setWaveType] = useState("");
+  const [waveType, setWaveType] = useState("group");
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const WaveData = {
@@ -33,7 +33,6 @@ const createWave = () => {
       },
       body: JSON.stringify(WaveData),
     }).then(() => {
-      console.log("new blog added");
       setIsPending(false);
       history.push("/");
     });
@@ -119,4 +118,4 @@ const createWave = () => {
   );
 };
 
-export default createWave;
+export default createWavePage;

@@ -4,10 +4,10 @@ import { Link, Route, Switch } from "react-router-dom";
 import HomeDashboard from "./HomeDashboard";
 import SideBar from "../components/SideBar";
 import HeaderNavigation from "../Layout/HeaderNavigation";
-import CreateWave from "./createWave";
+import CreateWavePage from "./createWavePage";
 import FooterArea from "../Layout/FooterArea";
 import React from "react";
-import WaveDetails from "./WaveDetails";
+import WaveDetailsPage from "./WaveDetailsPage";
 
 function App() {
   return (
@@ -27,10 +27,10 @@ function App() {
                   <HomeDashboard />
                 </Route>
                 <Route path="/create">
-                  <CreateWave />
+                  <CreateWavePage />
                 </Route>
                 <Route path="/view-wave/:id">
-                  <WaveDetails />
+                  <WaveDetailsPage />
                 </Route>
               </Switch>
             </div>

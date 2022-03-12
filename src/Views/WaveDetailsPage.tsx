@@ -1,41 +1,42 @@
 import { useHistory, useParams } from "react-router-dom";
 import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
+import WaveTile from "../components/waveComponents/WaveTile";
 
-const WaveDetails = () => {
+const WaveDetailsPage = () => {
   const { id } = useParams<RouteParamsType>();
   const history = useHistory();
 
   const {
-    data: waves,
+    data: wave,
     isError,
     isLoading,
   } = useFetch("http://localhost:5100/waves/" + id) as unknown as WaveDataState;
 
   const deleteWave = () => {
-    fetch(`http://localhost:5100/waves/${id}`, {
+    fetch("http://localhost:5100/waves/" + id, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => () => {
-      console.log(res, "deleteWave");
+    }).then(() => {
       history.push("/");
     });
   };
   return (
     <div>
+      <h1>Wave Details is here - {id}</h1>
+
       <div>
         {isLoading && <div>Loading...</div>}
         {isError && <div>Error</div>}
-        {waves && (
-          <div>
-            <h1>{waves.title}</h1>
-            <h1>{waves.goal}</h1>
-            <p>{waves.date}</p>
+        {wave && (
+          <div className="bg-secondary-500 p-10">
+            <WaveTile wave={wave} />
+            <div>
+              <div>
+                <h1>Wave Users</h1>
+              </div>
+            </div>
           </div>
         )}
-        <h1>Wave Details is here - {id}</h1>
       </div>
 
       <div>
@@ -47,4 +48,4 @@ const WaveDetails = () => {
   );
 };
 
-export default WaveDetails;
+export default WaveDetailsPage;
