@@ -18,7 +18,7 @@ const createWave = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const WaveData = {
-      name: waveName,
+      title: waveName,
       amount: waveAmount,
       type: waveType,
       date: waveDate,
@@ -32,13 +32,13 @@ const createWave = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(WaveData),
-    })
-      .then(() => {
-        console.log("new blog added");
-        setIsPending(false);
-      })
+    }).then(() => {
+      console.log("new blog added");
+      setIsPending(false);
+      history.push("/");
+    });
 
-      .catch((err) => console.log(err));
+    // .catch((err) => console.log(err));
   };
 
   return (
