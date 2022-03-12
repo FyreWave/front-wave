@@ -8,6 +8,7 @@ import CreateWavePage from "./createWavePage";
 import FooterArea from "../Layout/FooterArea";
 import React from "react";
 import WaveDetailsPage from "./WaveDetailsPage";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path="/view-wave/:id">
                   <WaveDetailsPage />
+                </Route>
+                <Route path="*">
+                  <NotFoundPage />
                 </Route>
               </Switch>
             </div>

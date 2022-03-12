@@ -9,6 +9,7 @@
     "fake-server": "json-server --watch db/db.json --port 5100"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "json-server": "^0.17.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -16,6 +17,7 @@
     "react-router-dom": "5"
   },
   "devDependencies": {
+    "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/react-router-dom": "^5.3.3",

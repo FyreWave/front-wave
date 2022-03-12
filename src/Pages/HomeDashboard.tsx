@@ -1,7 +1,16 @@
 import DepositHistoryComponent from "../components/DepositHistoryComponent";
 import WavesComponent from "../components/WavesComponent";
+import { $axios } from "../http/http.Service";
 
 const HomeDashboard = () => {
+  const testAxios = () => {
+    $axios.get("/waves").then((res) => {
+      console.log(res, "here");
+    });
+  };
+
+  testAxios();
+
   return (
     <div>
       <div className="pt-10">
