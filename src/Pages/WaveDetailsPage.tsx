@@ -30,7 +30,7 @@ const WaveDetailsPage = () => {
         {isError && <div>Error</div>}
         {wave && (
           <div>
-            <div className="grid md:grid-cols-2">
+            <div className="grid lg:grid-cols-2">
               <div className="bg-white">
                 <div className="p-10">
                   <h4 className="text-secondary-500 text-3xl">

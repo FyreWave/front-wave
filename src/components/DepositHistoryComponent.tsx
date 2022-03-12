@@ -40,7 +40,7 @@ const DepositHistoryComponent = () => {
     },
   ]);
   return (
-    <div className="bg-indigo-800">
+    <div className="bg-i-800">
       <div>
         {histories.map((history, index) => (
           <div key={index}>
