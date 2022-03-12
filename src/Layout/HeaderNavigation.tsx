@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavigationLinks from "../components/NavigationLinks";
 
 const HeaderNavigation = () => {
   // let name = "Ezeh";
@@ -34,7 +35,7 @@ const HeaderNavigation = () => {
               </svg>
             </div>
           </div>
-          <div>links</div>
+          <NavigationLinks />
         </div>
         <div className="pt-4">
           <h1 className=" big-title">
