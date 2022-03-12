@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="flex">
-        <div className="w-[400px] hidden lg:block">
+        <div className=" hidden">
           <div className="">
             <SideBar />
           </div>

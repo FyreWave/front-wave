@@ -1,6 +1,6 @@
 import { WavesDataType } from "../types/models";
 
-const WaveList = (props: { waves: any; title: any }) => {
+const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
   const waves = props.waves;
   const title = props.title;
   return (

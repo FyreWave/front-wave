@@ -8,7 +8,11 @@ const useFetch = (url: string) => {
 
   const [isError, setError] = useState(null);
   useEffect(() => {
-    fetch(url)
+    //abort fetching data if component unmounts
+
+    const abortController = new AbortController();
+
+    fetch(url, { signal: abortController.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Could not connect to server anymore");
@@ -22,10 +26,15 @@ const useFetch = (url: string) => {
         setError(null);
       })
       .catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-        console.log(err.message);
+        if (err.name === "AbortError") {
+        } else {
+          setError(err.message);
+          setIsLoading(false);
+        }
       });
+    //abort fetching data if component unmounts
+
+    return () => abortController.abort();
   }, [url]);
 
   return { data, isLoading, isError };

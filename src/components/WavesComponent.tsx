@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import WaveList from "./WaveList";
-import { WavesDataType } from "../types/models";
 import useFetch from "../libs/useFetch";
 
 const WavesComponent = () => {
