@@ -4,21 +4,22 @@
       "title": "Buy Car for Papa",
       "goal": "12,000,000",
       "date": "23/10/2022",
+      "type": "group",
       "id": "NuFEOnQ"
     },
     {
       "title": "Estate Development",
       "goal": "30,000,000",
+      "type": "group",
       "date": "01/11/2023",
       "id": "CqaHTfI"
     },
     {
       "title": "My wedding",
       "goal": "3,000,000",
+      "type": "group",
       "date": "01/11/2023",
       "id": "kYAibtg"
     }
-
-
   ]
 }

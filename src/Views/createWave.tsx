@@ -8,7 +8,7 @@ const createWave = () => {
   //single input
   const [waveName, setWaveName] = useState("Buy car for Sam");
   const [waveAmount, setWaveAmount] = useState("2,000,000");
-  const [waveDate, setWaveDate] = useState("");
+  const [waveDate, setWaveDate] = useState("group");
 
   const [isPending, setIsPending] = useState(false);
 
@@ -19,7 +19,7 @@ const createWave = () => {
     e.preventDefault();
     const WaveData = {
       title: waveName,
-      amount: waveAmount,
+      goal: waveAmount,
       type: waveType,
       date: waveDate,
     };
