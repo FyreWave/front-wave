@@ -43,15 +43,6 @@ const HeaderNavigation = () => {
           </h1>
         </div>
       </nav>
-
-      <div className="space-x-4">
-        <button className="regular-button" onClick={handleClick}>
-          Click Me
-        </button>
-        <button className="inverse-button" onClick={handleClick}>
-          Click Me
-        </button>
-      </div>
     </div>
   );
 };

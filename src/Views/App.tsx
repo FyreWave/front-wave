@@ -7,6 +7,7 @@ import HeaderNavigation from "../Layout/HeaderNavigation";
 import CreateWave from "./createWave";
 import FooterArea from "../Layout/FooterArea";
 import React from "react";
+import WaveDetails from "./WaveDetails";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
                 </Route>
                 <Route path="/create">
                   <CreateWave />
+                </Route>
+                <Route path="/view-wave/:id">
+                  <WaveDetails />
                 </Route>
               </Switch>
             </div>

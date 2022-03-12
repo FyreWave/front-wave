@@ -1,8 +1,11 @@
 import { WavesDataType } from "../types/models";
 
+import { Link } from "react-router-dom";
+
 const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
   const waves = props.waves;
   const title = props.title;
+  let className = "border-b-2";
   return (
     <div>
       <h1 className="text-lg">{title}</h1>
@@ -12,7 +15,9 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
             <div className="py-6">
               <div className="flex justify-between">
                 <div>
-                  <h1 className="regular-title">{wave.title}</h1>
+                  <Link to={`/view-wave/${wave.id}`}>
+                    <h2 className="text-lg">{wave.title}</h2>
+                  </Link>
                   <p>{wave.goal}</p>
                   <p>{wave.date}</p>
                 </div>
