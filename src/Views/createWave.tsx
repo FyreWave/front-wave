@@ -1,16 +1,62 @@
 import { useState } from "react";
 
 const createWave = () => {
+  // handle object
+
+  //single input
   const [waveName, setWaveName] = useState("");
   const [waveAmount, setWaveAmount] = useState("");
+
   const [waveType, setWaveType] = useState("");
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const blog = {
+      name: waveName,
+      amount: waveAmount,
+      type: waveType,
+    };
+    fetch("http://localhost:5100/waves", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(blog),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    console.log(blog);
+  };
+
+  const [wave, setWave] = useState({
+    name: "wavve-name",
+    amount: 222,
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    setWave({ ...wave, [name]: value });
+  };
 
   return (
     <div>
       <h2>Create a new Wave</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="space-y-4">
+          <div>
+            {wave.name}
+            <label>Wave name:</label>
+            <input
+              value={wave.name}
+              name={wave.name}
+              onChange={handleChange}
+              type="text"
+              required
+            />
+          </div>
+          <br />
           <div>
             {waveName}
             <label>Wave name:</label>

@@ -12,3 +12,10 @@ export type WaveDataState = {
   isError: boolean;
   isLoading: boolean;
 };
+
+export type WavesDataType = {
+  title: string;
+  goal: string;
+  date: string;
+  id: number;
+};

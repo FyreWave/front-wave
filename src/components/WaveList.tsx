@@ -1,11 +1,10 @@
-import { WavesDataType } from "../types/models";
+import { WavesDataType } from "../types/modelsTypings";
 
 import { Link } from "react-router-dom";
 
 const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
   const waves = props.waves;
   const title = props.title;
-  let className = "border-b-2";
   return (
     <div>
       <h1 className="text-lg">{title}</h1>
