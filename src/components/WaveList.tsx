@@ -1,9 +1,8 @@
 import { WavesDataType } from "../types/models";
 
-const WaveList = (props: { waves: any; title: any; handleDelete: any }) => {
+const WaveList = (props: { waves: any; title: any }) => {
   const waves = props.waves;
   const title = props.title;
-  const handleDelete = props.handleDelete;
   return (
     <div>
       <h1 className="text-lg">{title}</h1>
@@ -18,10 +17,7 @@ const WaveList = (props: { waves: any; title: any; handleDelete: any }) => {
                   <p>{wave.date}</p>
                 </div>
                 <div>
-                  <button
-                    onClick={() => handleDelete(index)}
-                    className="regular-button"
-                  >
+                  <button className="regular-button">
                     <i className="fa-solid fa-arrow-right"></i>
                   </button>
                 </div>
