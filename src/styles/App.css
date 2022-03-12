@@ -12,6 +12,7 @@
 
 
 }
+
 .regular-text {
     @apply text-secondary-500
 }
@@ -23,18 +24,25 @@
     @apply text-secondary-500 text-3xl font-bold
 }
 
+.form-input{
+    @apply bg-white border border-gray-300  bg-gray-100 w-full p-2
+}
+
 h1,p{
     color: red
 }
 
 .regular-button{
-    @apply bg-primary-500 rounded-md px-4 py-2 text-white text-sm
+    @apply bg-primary-500 rounded-md px-4 py-4 text-white text-sm
 }
 
 .inverse-button{
-    @apply border-2 border-red-300 rounded-md px-4 py-2 text-gray-600
+    @apply border-2 border-b-primary-500 text-primary-500  rounded-md px-4 py-1 text-sm text-gray-600
 }
 
+.muted-button{
+   @apply bg-primary-900  py-4  rounded-sm  text-white px-4 text-sm
+}
 
 
 
