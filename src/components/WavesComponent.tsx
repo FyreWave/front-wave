@@ -21,6 +21,7 @@ const WavesComponent = () => {
         if (!res.ok) {
           throw new Error("Could not connect to server anymore");
         }
+
         return res.json();
       })
       .then((data) => {
