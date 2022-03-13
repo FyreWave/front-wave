@@ -15,10 +15,12 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
               <div className="flex justify-between">
                 <div>
                   <Link to={`/view-wave/${wave.id}`}>
-                    <h2 className="text-lg">{wave.title}</h2>
+                    <h2 className="text-xl font-bold">{wave.title}</h2>
                   </Link>
-                  <p>{wave.goal}</p>
-                  <p>{wave.date}</p>
+                  <p className="font-bold py-1 text-sm goal-color">
+                    Goal: &#8358;{wave.goal}
+                  </p>
+                  <p className="text-sm text-gray-500">Due: {wave.date}</p>
                 </div>
                 <div>
                   <button className="regular-button">

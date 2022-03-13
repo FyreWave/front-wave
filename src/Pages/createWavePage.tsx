@@ -45,7 +45,7 @@ const createWavePage = () => {
       <h2>Create a new Wave</h2>
 
       <div className="flex justify-center">
-        <div className="bg-white  border shadow w-full py-32 ">
+        <div className="bg-white w-full py-32 ">
           <div className="flex justify-center">
             <div className="w-[450px] px-8">
               <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ const createWavePage = () => {
                     <label>Target amount:</label>
                     <input
                       type="text"
-                      className="form-input"
+                      className="form-input "
                       value={waveAmount}
                       onChange={(e) => setWaveAmount(e.target.value)}
                       required

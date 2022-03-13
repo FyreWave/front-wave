@@ -1,64 +1,57 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
-*{
-    font-family: 'Red Hat Text', sans-serif;
-
-
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap");
+* {
+  font-family: "Red Hat Text", sans-serif;
 }
 
 .App {
-
-    @apply bg-slate-100 ;
-
-
+  background-color: #f6f6f6;
 }
 
 .regular-text {
-    @apply text-secondary-500
+  @apply text-secondary-500;
 }
 
-.regular-title{
-    @apply text-secondary-500  font-semibold}
-
-.big-title{
-    @apply text-secondary-500 text-3xl font-bold
+.regular-title {
+  @apply text-secondary-500  font-semibold;
 }
 
-.form-input{
-    @apply bg-white border border-gray-300  bg-gray-100 w-full p-2
+.big-title {
+  @apply text-secondary-500 text-3xl font-bold;
 }
 
-h1,p{
-    color: red
+.form-input {
+  @apply bg-white bg-gray-100 w-full p-2;
 }
 
-.regular-button{
-    @apply bg-primary-500 rounded-md px-4 py-4 text-white text-sm
+h1,
+p {
+  color: #212045;
 }
 
-.inverse-button{
-    @apply border-2 border-b-primary-500 text-primary-500  rounded-md px-4 py-1 text-sm text-gray-600
+.regular-button {
+  @apply bg-primary-500 rounded-md px-5 py-2 text-white text-sm;
 }
 
-.muted-button{
-   @apply bg-primary-900  py-4  rounded-sm  text-white px-4 text-sm
+.inverse-button {
+  @apply border-2 border-b-primary-500 text-primary-500  rounded-md px-4 py-1 text-sm text-gray-600;
 }
 
-
+.muted-button {
+  @apply bg-primary-900  py-4  rounded-sm  text-white px-4 text-sm;
+}
 
 .Dashboard-tile {
-@apply bg-white rounded-md border shadow p-4
+  @apply bg-white  p-4;
 }
-
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-
-
-
+.goal-color {
+  color: #00cc66;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -71,4 +64,10 @@ h1,p{
 
 button {
   font-size: calc(10px + 2vmin);
+}
+
+.fa-arrow-right {
+  color: #212045;
+  font-weight: 900;
+  stroke: 4px;
 }

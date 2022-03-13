@@ -14,6 +14,7 @@ const DepositHistoryComponent = () => {
       date: "23/11/2022",
       id: 1,
     },
+
     {
       title: "Buy Car for Papa",
       goal: "12,000,000",
@@ -40,7 +41,7 @@ const DepositHistoryComponent = () => {
     },
   ]);
   return (
-    <div className="bg-i-800">
+    <div className="bg-i-800 my-b">
       <div>
         {histories.map((history, index) => (
           <div key={index}>
@@ -52,10 +53,10 @@ const DepositHistoryComponent = () => {
                       {number} ***** **** {number}
                     </h1>
                     <h1 className="regular-title text-xs">{history.title}</h1>
-                    <p>{history.date}</p>
+                    <p className="text-sm">{history.date}</p>
                   </div>
                   <div>
-                    <p>N{history.goal}</p>
+                    <p>&#8358;{history.goal}</p>
                   </div>
                 </div>
               </div>

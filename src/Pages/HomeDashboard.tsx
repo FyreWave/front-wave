@@ -12,7 +12,9 @@ const HomeDashboard = () => {
               <div className="Dashboard-tile h-40">
                 <div className="p-4">
                   <h2 className="regular-title">Total Savings:</h2>
-                  <h1 className="text-3xl "> 124,232,000</h1>
+                  <h1 className="text-3xl font-extrabold">
+                    <span className="font-thin">&#8358;</span>124,232,000
+                  </h1>
                 </div>
               </div>
               <div className="Dashboard-tile mt-4">
