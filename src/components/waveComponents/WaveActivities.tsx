@@ -8,15 +8,21 @@ const activities = [
   {
     name: "Nelson fundzbag",
     amount: "",
-    type: "withdrawal",
+    type: "initiated a withdrawal",
     date: "25-12-2022",
   },
   {
     name: "Williams Uchendu",
-    types: "deposited",
+    type: "deposited",
 
     amount: "23,000",
     date: "25-12-2022",
+  },
+  {
+    name: "Sam Nmeje",
+    type: "invited",
+    invitee: "sandra",
+    date: "25-334-2023",
   },
 ];
 
@@ -29,7 +35,7 @@ const WaveActivities = () => {
             return (
               <div className="text-xl font-medium py-2">
                 <div className="activity-name">
-                  {activity.name} {activity.type}{" "}
+                  {activity.name} {activity.type} {activity.invitee}
                   <span className="text-primary-500">{activity.amount}</span>
                 </div>
 

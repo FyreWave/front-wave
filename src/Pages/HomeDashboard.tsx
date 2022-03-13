@@ -7,12 +7,12 @@ const HomeDashboard = () => {
     <div>
       <div className="pt-10">
         <div>
-          <div className="grid md:grid-cols-2 gap-x-4">
+          <div className="grid md:grid-cols-2 gap-x-4 gap-y-4">
             <div className="">
               <div className="Dashboard-tile h-40">
                 <div className="p-4">
                   <h2 className="regular-title">Total Savings:</h2>
-                  <h1 className="text-3xl font-extrabold">
+                  <h1 className="text-3xl font-extrabold m-4">
                     <span className="font-thin">&#8358;</span>124,232,000
                   </h1>
                 </div>

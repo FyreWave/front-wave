@@ -55,7 +55,7 @@ const WaveDetailsPage = () => {
       </div>
 
       <div>
-        <button onClick={deleteWave} className="regular-button">
+        <button onClick={deleteWave} className="regular-button mt-4">
           Delete Wave
         </button>
       </div>

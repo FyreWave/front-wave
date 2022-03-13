@@ -208,7 +208,7 @@ const WaveUsers = () => {
     <div>
       <div>
         <ul>
-          <li>waver</li>
+          <li className="text-white">waver</li>
         </ul>
       </div>
       <div className="h-[500px]">
@@ -222,7 +222,7 @@ const WaveUsers = () => {
                 {directory[letter].map((person: any) => (
                   <li key={person.id} className="bg-secondary-400">
                     <div className="flex justify-between items-center">
-                      <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-secondary-600 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                      <div className="relative px-6 py-5 flex items-center space-x-3 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                         <div className="flex-shrink-0">
                           <img
                             className="h-10 w-10 rounded-full"

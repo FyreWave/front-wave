@@ -20,7 +20,9 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
                   <p className="font-bold py-1 text-sm goal-color">
                     Goal: &#8358;{wave.goal}
                   </p>
-                  <p className="text-sm text-gray-500">Due: {wave.date}</p>
+                  <p className="text-xs text-gray-500 font-bold">
+                    Due: {wave.date}
+                  </p>
                 </div>
                 <div>
                   <button className="regular-button">

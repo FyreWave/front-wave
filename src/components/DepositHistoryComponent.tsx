@@ -41,22 +41,31 @@ const DepositHistoryComponent = () => {
     },
   ]);
   return (
-    <div className="bg-i-800 my-b">
+    <div className="my-b">
       <div>
         {histories.map((history, index) => (
           <div key={index}>
             <div className="border-b-2">
               <div className="py-6">
                 <div className="flex justify-between">
-                  <div>
-                    <h1>
-                      {number} ***** **** {number}
-                    </h1>
-                    <h1 className="regular-title text-xs">{history.title}</h1>
-                    <p className="text-sm">{history.date}</p>
+                  <div className="flex">
+                    <div className="bg-primary-500 p-1 rounded-full w-12 h-12 flex justify-center mr-2">
+                      <div className="text-center">
+                        <p className="text-lg text-white font-bold">23</p>
+                        <p className="text-sm text-white -mt-2">mar</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h1>
+                        {number} ***** **** {number}
+                      </h1>
+                      <h1 className="font-semibold text-xs text-gray-500">
+                        {history.title}
+                      </h1>
+                    </div>
                   </div>
                   <div>
-                    <p>&#8358;{history.goal}</p>
+                    <p className="font-bold">&#8358;{history.goal}</p>
                   </div>
                 </div>
               </div>
