@@ -25,7 +25,7 @@
 
 h1,
 p {
-  color: #212045;
+  @apply text-secondary-500;
 }
 
 .regular-button {

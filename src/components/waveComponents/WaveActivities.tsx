@@ -14,7 +14,6 @@ const activities = [
   {
     name: "Williams Uchendu",
     type: "deposited",
-
     amount: "23,000",
     date: "25-12-2022",
   },
@@ -33,13 +32,19 @@ const WaveActivities = () => {
         <div className="activities">
           {activities.map((activity) => {
             return (
-              <div className="text-xl font-medium py-2">
+              <div className="text-base font-regular py-2">
                 <div className="activity-name">
-                  {activity.name} {activity.type} {activity.invitee}
-                  <span className="text-primary-500">{activity.amount}</span>
+                  {activity.name}{" "}
+                  <span className="text-secondary-800 italic">
+                    {activity.type}
+                  </span>{" "}
+                  {activity.invitee}
+                  <span className="text-primary-500 font-bold">
+                    {activity.amount}
+                  </span>
                 </div>
 
-                <div className="text-xs">{activity.date}</div>
+                <div className="text-xs text-gray-400">{activity.date}</div>
               </div>
             );
           })}
