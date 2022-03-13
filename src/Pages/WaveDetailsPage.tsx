@@ -3,6 +3,7 @@ import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
 import WaveTile from "../components/waveComponents/WaveTile";
 import WaveUsers from "../components/waveComponents/WaveUsers";
+import WaveActivities from "../components/waveComponents/WaveActivities";
 
 const WaveDetailsPage = () => {
   const { id } = useParams<RouteParamsType>();
@@ -31,12 +32,14 @@ const WaveDetailsPage = () => {
         {wave && (
           <div>
             <div className="grid lg:grid-cols-2">
-              <div className="bg-white">
-                <div className="p-10">
+              <div className="bg-white p-10">
+                <div className=" border-b-2">
                   <h4 className="text-secondary-500 text-3xl">
                     Wave Activities
                   </h4>
                 </div>
+
+                <WaveActivities />
               </div>
               <div className="bg-secondary-500 p-10">
                 <WaveTile wave={wave} />
