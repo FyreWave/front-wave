@@ -1,12 +1,6 @@
 import WavesComponent from "../components/WavesComponent";
 import DepositHistoryComponent from "../components/DepositHistoryComponent";
-import {
-  Link,
-  Route,
-  Switch,
-  useLocation,
-  useRouteMatch,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomeDashboard from "./HomeDashboard";
 import SideBar from "../components/SideBar";
 import HeaderNavigation from "../Layout/HeaderNavigation";
@@ -18,8 +12,6 @@ import NotFoundPage from "./NotFoundPage";
 import RegisterPage from "./RegisterPage";
 
 function App() {
-  const { pathname } = useLocation();
-
   return (
     <div className="App">
       <div className="flex">
@@ -30,26 +22,18 @@ function App() {
         </div>
         <div className="w-screen">
           <div className="">
-            <p>tdyguhi {pathname}</p>
             <HeaderNavigation />
             <div className="">
-              <Switch>
-                <Route exact path="/">
-                  <HomeDashboard />
-                </Route>
-                <Route path="/create">
-                  <CreateWavePage />
-                </Route>
-                <Route path="/register">
-                  <RegisterPage />
-                </Route>
-                <Route path="/view-wave/:id">
-                  <WaveDetailsPage />
-                </Route>
-                <Route path="*">
-                  <NotFoundPage />
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path="/" element={<HomeDashboard />} />
+
+                <Route path="/create" element={<CreateWavePage />} />
+
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/view-wave/:id" element={<WaveDetailsPage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
             </div>
           </div>
         </div>

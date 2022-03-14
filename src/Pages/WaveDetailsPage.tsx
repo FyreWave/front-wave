@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
 import WaveTile from "../components/waveComponents/WaveTile";
@@ -6,8 +6,8 @@ import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
 
 const WaveDetailsPage = () => {
-  const { id } = useParams<RouteParamsType>();
-  const history = useHistory();
+  const { id } = useParams();
+  const history = useNavigate();
 
   const {
     data: wave,
@@ -19,7 +19,7 @@ const WaveDetailsPage = () => {
     fetch("http://localhost:5100/waves/" + id, {
       method: "DELETE",
     }).then(() => {
-      history.push("/");
+      history("/");
     });
   };
   return (

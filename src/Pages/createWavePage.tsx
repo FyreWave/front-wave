@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const createWavePage = () => {
   // console.log(import.meta.env.DEV);
@@ -12,7 +12,7 @@ const createWavePage = () => {
 
   const [isPending, setIsPending] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
 
   const [waveType, setWaveType] = useState("group");
   const handleSubmit = (e: any) => {
@@ -34,7 +34,7 @@ const createWavePage = () => {
       body: JSON.stringify(WaveData),
     }).then(() => {
       setIsPending(false);
-      history.push("/");
+      history("/");
     });
 
     // .catch((err) => console.log(err));

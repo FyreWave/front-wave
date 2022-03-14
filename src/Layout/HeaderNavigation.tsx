@@ -7,12 +7,6 @@ const HeaderNavigation = () => {
 
   const [name, setName] = useState("Ezeh");
   const [amount, setAmount] = useState(123456);
-  const location = useLocation();
-
-  const handleClick = () => {
-    setName("Xammmy");
-    setAmount(amount * 2);
-  };
 
   return (
     <div>

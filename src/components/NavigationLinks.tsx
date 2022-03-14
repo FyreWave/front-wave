@@ -1,14 +1,15 @@
-import { Link, BrowserRouter, Switch } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { text } from "stream/consumers";
 
 const NavigationLinks = () => {
   return (
     <div className="space-x-4">
-      <Link to="/">Home</Link>
+      <NavLink to="/">Home</NavLink>
       <Link to="/create">Create</Link>
-      <Link to="/create">All Waves</Link>
-      <Link to="/create">History</Link>
-      <Link to="/create">Profile</Link>
-      <Link to="/register">Register</Link>
+      <NavLink to="/create">All Waves</NavLink>
+      <NavLink to="/create">History</NavLink>
+      <NavLink to="/create">Profile</NavLink>
+      <NavLink to="/register">Register</NavLink>
       <Link to="/create">Logout</Link>
     </div>
   );

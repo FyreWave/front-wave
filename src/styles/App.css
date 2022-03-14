@@ -67,7 +67,10 @@ button {
 }
 
 .fa-arrow-right {
-  color: #212045;
-  font-weight: 900;
-  stroke: 4px;
+  @apply text-secondary-500;
+}
+
+
+.active {
+  color: #00cc66;
 }
