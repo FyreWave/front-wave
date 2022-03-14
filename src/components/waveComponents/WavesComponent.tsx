@@ -1,5 +1,5 @@
 import WaveList from "./WaveList";
-import useFetch from "../libs/useFetch";
+import useFetch from "../../libs/useFetch";
 
 const WavesComponent = () => {
   const {

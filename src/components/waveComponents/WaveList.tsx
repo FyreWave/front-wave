@@ -1,4 +1,4 @@
-import { WavesDataType } from "../types/modelsTypings";
+import { WavesDataType } from "../../types/modelsTypings";
 
 import { Link } from "react-router-dom";
 

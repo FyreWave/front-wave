@@ -1,16 +1,16 @@
-import WavesComponent from "../components/WavesComponent";
-import DepositHistoryComponent from "../components/DepositHistoryComponent";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomeDashboard from "./HomeDashboard";
 import SideBar from "../components/SideBar";
 import HeaderNavigation from "../Layout/HeaderNavigation";
 import CreateWavePage from "./createWavePage";
 import FooterArea from "../Layout/FooterArea";
-import React from "react";
 import WaveDetailsPage from "./WaveDetailsPage";
 import NotFoundPage from "./NotFoundPage";
 import RegisterPage from "./RegisterPage";
 import ProfilePage from "./ProfilePage";
+import SecurityPage from "./profile/SecurityPage";
+import PersonalInfo from "./profile/PersonalInfo";
 
 function App() {
   return (
@@ -29,10 +29,14 @@ function App() {
                 <Route path="/" element={<HomeDashboard />} />
 
                 <Route path="/create" element={<CreateWavePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<ProfilePage />}>
+                  <Route index element={<PersonalInfo />} />
+                  <Route path="security" element={<SecurityPage />} />
+                  <Route path="personal" element={<PersonalInfo />} />
+                </Route>
 
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/view-wave/:id" element={<WaveDetailsPage />} />
+                <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

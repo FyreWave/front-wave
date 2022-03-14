@@ -1,5 +1,5 @@
 import DepositHistoryComponent from "../components/DepositHistoryComponent";
-import WavesComponent from "../components/WavesComponent";
+import WavesComponent from "../components/waveComponents/WavesComponent";
 import { $axios } from "../http/http.Service";
 
 const HomeDashboard = () => {

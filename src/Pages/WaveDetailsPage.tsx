@@ -6,17 +6,20 @@ import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
 
 const WaveDetailsPage = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const waveId = params.waveId;
   const history = useNavigate();
 
   const {
     data: wave,
     isError,
     isLoading,
-  } = useFetch("http://localhost:5100/waves/" + id) as unknown as WaveDataState;
+  } = useFetch(
+    "http://localhost:5100/waves/" + waveId
+  ) as unknown as WaveDataState;
 
   const deleteWave = () => {
-    fetch("http://localhost:5100/waves/" + id, {
+    fetch("http://localhost:5100/waves/" + waveId, {
       method: "DELETE",
     }).then(() => {
       history("/");
@@ -24,7 +27,7 @@ const WaveDetailsPage = () => {
   };
   return (
     <div>
-      <h1>Wave Details is here - {id}</h1>
+      <h1>Wave Details is here - {waveId}</h1>
 
       <div>
         {isLoading && <div>Loading...</div>}
