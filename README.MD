@@ -1,5 +1,5 @@
 
-# Project Title
+# Fyrewave
 
 Fyrewave is for a group that  want to save money together, to a common goal.
 
