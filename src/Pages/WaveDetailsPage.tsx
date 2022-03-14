@@ -5,62 +5,16 @@ import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
 import { useState } from "react";
 import TabView from "../components/waveComponents/TabView";
-function classNames(...classes: any[]) {
+import { Tab } from "@headlessui/react";
+
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
-
 const WaveDetailsPage = () => {
   let [categories] = useState({
-    Recent: [
-      {
-        id: 1,
-        title: "Does drinking coffee make you smarter?",
-        date: "5h ago",
-        commentCount: 5,
-        shareCount: 2,
-      },
-      {
-        id: 2,
-        title: "So you've bought coffee... now what?",
-        date: "2h ago",
-        commentCount: 3,
-        shareCount: 2,
-      },
-    ],
-    Popular: [
-      {
-        id: 1,
-        title: "Is tech making coffee better or worse?",
-        date: "Jan 7",
-        commentCount: 29,
-        shareCount: 16,
-      },
-      {
-        id: 2,
-        title: "The most innovative things happening in coffee",
-        date: "Mar 19",
-        commentCount: 24,
-        shareCount: 12,
-      },
-    ],
-    Trending: [
-      {
-        id: 1,
-        title: "Ask Me Anything: 10 answers to your questions about coffee",
-        date: "2d ago",
-        commentCount: 9,
-        shareCount: 5,
-      },
-      {
-        id: 2,
-        title: "The worst advice we've ever heard about coffee",
-        date: "4d ago",
-        commentCount: 1,
-        shareCount: 2,
-      },
-    ],
+    "Wave details": [],
+    Activities: [],
   });
-
   const params = useParams();
   const waveId = params.waveId;
   const history = useNavigate();
@@ -82,37 +36,65 @@ const WaveDetailsPage = () => {
   };
   return (
     <div>
-      <h1>Wave Details is here - {waveId}</h1>
-
       <div>
         {isLoading && <div>Loading...</div>}
         {isError && <div>Error</div>}
         {wave && (
           <div>
-            <div className="grid md:grid-cols-2">
-              <div className="bg-white p-10">
-                <div className=" border-b-2">
-                  <h4 className="text-secondary-500 text-3xl">
-                    Wave Activities
-                  </h4>
+            <div className="hidden md:block">
+              <div className="grid md:grid-cols-2">
+                <div className="bg-white">
+                  <WaveActivities />
                 </div>
-
-                <WaveActivities />
-              </div>
-              <div className="bg-secondary-500 p-10">
-                <div>
+                <div className="">
                   <div>
-                    <WaveUsers wave={wave} />
+                    <div className="bg-secondary-500">
+                      <WaveUsers wave={wave} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            {/*  mobile view area*/}
+            <div className="flex justify-center md:hidden ">
+              <div className="w-full max-w-md px-2 py-16 sm:px-0">
+                <Tab.Group defaultIndex={1}>
+                  <Tab.Panels className="mt-2 bg-white">
+                    <Tab.Panel>
+                      <div className="bg-white">
+                        <WaveActivities />
+                      </div>
+                    </Tab.Panel>
+                    <Tab.Panel>
+                      <div className="bg-secondary-500">
+                        <WaveUsers wave={wave} />
+                      </div>
+                    </Tab.Panel>
+                  </Tab.Panels>
+                  <Tab.List className="flex p-1 space-x-1 bg-secondary-500 rounded-xl mt-6">
+                    {Object.keys(categories).map((category) => (
+                      <Tab
+                        key={category}
+                        className={({ selected }) =>
+                          classNames(
+                            "w-full py-2.5 text-sm leading-5 font-medium text-white rounded-lg",
+                            "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-green-100 ring-white ring-opacity-60",
+                            selected
+                              ? "bg-primary-500 shadow"
+                              : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                          )
+                        }
+                      >
+                        {category}
+                      </Tab>
+                    ))}
+                  </Tab.List>
+                </Tab.Group>
+              </div>
+            </div>
+            {/*  mobile view area*/}
           </div>
         )}
-      </div>
-
-      <div className="flex justify-center md:hidden">
-        <TabView />
       </div>
 
       <div>
