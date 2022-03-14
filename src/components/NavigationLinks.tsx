@@ -8,6 +8,7 @@ const NavigationLinks = () => {
       <Link to="/create">All Waves</Link>
       <Link to="/create">History</Link>
       <Link to="/create">Profile</Link>
+      <Link to="/register">Register</Link>
       <Link to="/create">Logout</Link>
     </div>
   );
