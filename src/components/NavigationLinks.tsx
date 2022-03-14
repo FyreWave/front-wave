@@ -3,6 +3,7 @@ import { text } from "stream/consumers";
 
 const NavigationLinks = () => {
   return (
+
     <div className="space-x-4">
       <NavLink to="/">Home</NavLink>
       <Link to="/create">Create</Link>
