@@ -15,7 +15,7 @@ const RegisterPage = () => {
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="mobile"
                   className="block text-sm text-center mt-8 text-gray-700"
                 >
                   Enter your phone number
@@ -32,12 +32,20 @@ const RegisterPage = () => {
               </div>
 
               <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="flex justify-center px-8 py-2 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-500 hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Get OPT
-                </button>
+                <div>
+                  <button
+                    type="submit"
+                    className="flex justify-center px-8 py-2 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-500 hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Get OPT
+                  </button>
+
+                  <div>
+                    <Link to="/">
+                      <p className="text-center pt-4 underline"> Home</p>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
