@@ -9,6 +9,7 @@
     "fake-server": "json-server --watch db/db.json --port 5100"
   },
   "dependencies": {
+    "@headlessui/react": "^1.5.0",
     "axios": "^0.26.1",
     "json-server": "^0.17.0",
     "moment": "^2.29.1",
