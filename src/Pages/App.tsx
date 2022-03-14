@@ -10,6 +10,7 @@ import React from "react";
 import WaveDetailsPage from "./WaveDetailsPage";
 import NotFoundPage from "./NotFoundPage";
 import RegisterPage from "./RegisterPage";
+import ProfilePage from "./ProfilePage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/" element={<HomeDashboard />} />
 
                 <Route path="/create" element={<CreateWavePage />} />
+                <Route path="/profile" element={<ProfilePage />} />
 
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/view-wave/:id" element={<WaveDetailsPage />} />
