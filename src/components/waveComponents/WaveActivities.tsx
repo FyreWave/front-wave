@@ -28,7 +28,7 @@ const activities = [
 const WaveActivities = () => {
   return (
     <div>
-      <div className=" p-10">
+      <div className="h-[800px] p-10">
         <div>
           <div className=" border-b-2">
             <h4 className="text-secondary-500 text-3xl">Wave Activities</h4>

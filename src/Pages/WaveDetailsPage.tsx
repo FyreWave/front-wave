@@ -12,8 +12,8 @@ function classNames(...classes: string[]) {
 }
 const WaveDetailsPage = () => {
   let [categories] = useState({
-    "Wave details": [],
     Activities: [],
+    "Wave details": [],
   });
   const params = useParams();
   const waveId = params.waveId;

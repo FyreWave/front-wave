@@ -23,7 +23,6 @@ function App() {
       setFullScreen(false);
     }
   });
-
   return (
     <div className="App">
       <div className="flex">
@@ -56,7 +55,6 @@ function App() {
           </div>
         </div>
       </div>
-
       {!isFullScreen && <FooterArea />}
     </div>
   );

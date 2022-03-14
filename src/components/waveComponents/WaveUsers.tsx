@@ -207,7 +207,7 @@ const WaveUsers = (props: any) => {
   const wave = props.wave;
   const title = props.title;
   return (
-    <div className=" p-10">
+    <div className="h-[800px] p-10">
       <section>
         <div>
           <h1 className="text-white font-bold">{wave.title}</h1>
