@@ -1,11 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
-import WaveTile from "../components/waveComponents/WaveTile";
 import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
 import { useState } from "react";
 import TabView from "../components/waveComponents/TabView";
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const WaveDetailsPage = () => {
   let [categories] = useState({
@@ -98,10 +100,9 @@ const WaveDetailsPage = () => {
                 <WaveActivities />
               </div>
               <div className="bg-secondary-500 p-10">
-                <WaveTile wave={wave} />
                 <div>
                   <div>
-                    <WaveUsers />
+                    <WaveUsers wave={wave} />
                   </div>
                 </div>
               </div>
