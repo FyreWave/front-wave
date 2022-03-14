@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import HomeDashboard from "./HomeDashboard";
 import SideBar from "../components/SideBar";
 import HeaderNavigation from "../Layout/HeaderNavigation";
@@ -13,6 +13,17 @@ import SecurityPage from "./profile/SecurityPage";
 import PersonalInfo from "./profile/PersonalInfo";
 
 function App() {
+  const location = useLocation();
+  const [isFullScreen, setFullScreen] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname === "/register") {
+      setFullScreen(true);
+    } else {
+      setFullScreen(false);
+    }
+  });
+
   return (
     <div className="App">
       <div className="flex">
@@ -23,8 +34,9 @@ function App() {
         </div>
         <div className="w-screen">
           <div className="">
-            <HeaderNavigation />
-            <div className="">
+            {!isFullScreen && <HeaderNavigation />}
+
+            <div className={isFullScreen ? "" : "container mx-auto px-4"}>
               <Routes>
                 <Route path="/" element={<HomeDashboard />} />
 
@@ -35,7 +47,7 @@ function App() {
                   <Route path="personal" element={<PersonalInfo />} />
                 </Route>
 
-                <Route path="/register" element={<RegisterPage />} />
+                <Route path="register" element={<RegisterPage />} />
                 <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
@@ -45,7 +57,7 @@ function App() {
         </div>
       </div>
 
-      <FooterArea />
+      {!isFullScreen && <FooterArea />}
     </div>
   );
 }
