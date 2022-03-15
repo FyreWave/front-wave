@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const createWavePage = () => {
@@ -9,7 +9,6 @@ const createWavePage = () => {
   const [waveName, setWaveName] = useState("Buy car for Sam");
   const [waveAmount, setWaveAmount] = useState("2,000,000");
   const [waveDate, setWaveDate] = useState("");
-
   const [isPending, setIsPending] = useState(false);
 
   const history = useNavigate();

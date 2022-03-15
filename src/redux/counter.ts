@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface CounterState {
   counter: number;
   menuState: boolean;
+  username: string;
 }
 
 const initialState: CounterState = {
   counter: 0,
   menuState: true,
+  username: "Sam",
 };
 
 export const counterSlice = createSlice({

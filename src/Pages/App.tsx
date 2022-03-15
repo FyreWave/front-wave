@@ -23,6 +23,7 @@ import { RootState } from "../redux/store";
 function App() {
   const count = useSelector((state: RootState) => state.counter.counter);
   const menuState = useSelector((state: RootState) => state.counter.menuState);
+  const username = useSelector((state: RootState) => state.counter.username);
   const dispatch = useDispatch();
   const location = useLocation();
   const [isFullScreen, setFullScreen] = useState(false);
@@ -40,7 +41,9 @@ function App() {
         <h1>The count is : {count}</h1>
         <h1>Menu State : {menuState}</h1>
 
-        {menuState && <div className="bg-red-500 p-2">hide/show</div>}
+        {menuState && (
+          <div className="bg-red-500 p-2"> {username}hide/show</div>
+        )}
         <button
           className="regular-button"
           onClick={() => dispatch(increment())}
