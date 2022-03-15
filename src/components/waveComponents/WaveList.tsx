@@ -10,7 +10,7 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
       <h1 className="text-lg">{title}</h1>
       {waves.map((wave: any, index: number) => (
         <div key={index}>
-          <div className="border-b-2">
+          <div className="border-b">
             <div className="py-6">
               <div className="flex justify-between">
                 <div>
