@@ -64,7 +64,7 @@ const createWavePage = () => {
                   <div>
                     <label>Target amount:</label>
                     <input
-                      type="text"
+                      type="number"
                       className="form-input "
                       value={waveAmount}
                       onChange={(e) => setWaveAmount(e.target.value)}
@@ -92,7 +92,7 @@ const createWavePage = () => {
                       onChange={(e) => setWaveType(e.target.value)}
                     >
                       <option value="group">Group Savings</option>
-                      <option value="other">Other Savings</option>
+                      <option value="other">Crowdfunding</option>
                     </select>
                   </div>
 

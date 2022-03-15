@@ -45,7 +45,7 @@ const DepositHistoryComponent = () => {
       <div>
         {histories.map((history, index) => (
           <div key={index}>
-            <div className="border-b-2">
+            <div>
               <div className="py-6">
                 <div className="flex justify-between">
                   <div className="flex">
