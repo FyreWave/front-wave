@@ -12,7 +12,7 @@ const WavesComponent = () => {
     <div className="">
       {isError && <div>{isError}</div>}
       {isLoading && <div>Is loading...</div>}
-      {waves && <WaveList waves={waves} title="All Waves" />}
+      {waves && <WaveList waves={waves} title="Your Waves" />}
     </div>
   );
 };
