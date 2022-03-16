@@ -33,6 +33,7 @@ const DepositHistoryComponent = () => {
       date: "",
       id: 1,
     },
+
     {
       title: "Dubai trip with friends",
       goal: "7,500,000",

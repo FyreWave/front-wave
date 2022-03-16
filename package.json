@@ -4,14 +4,16 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --port 3300",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "fake-server": "json-server --watch db/db.json --port 5100"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@reduxjs/toolkit": "^1.8.0",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^0.26.1",
+    "formik": "^2.2.9",
     "json-server": "^0.17.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -23,7 +25,6 @@
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
-    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^1.0.7",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
