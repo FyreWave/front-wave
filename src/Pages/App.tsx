@@ -19,6 +19,8 @@ import {
   toggleMenu,
 } from "../redux/counter";
 import { RootState } from "../redux/store";
+import ProtectedRoutes from "../Layout/ProtectedRoutes";
+import AuthRoutes from "../Layout/AuthRoutes";
 
 function App() {
   const count = useSelector((state: RootState) => state.counter.counter);
@@ -77,22 +79,10 @@ function App() {
         </div>
         <div className="w-screen">
           <div className="">
-            {!isFullScreen && <HeaderNavigation />}
-
-            <div className={isFullScreen ? "" : "container mx-auto px-4"}>
+            <div>
               <Routes>
-                <Route path="/" element={<HomeDashboard />} />
-
-                <Route path="/create" element={<CreateWavePage />} />
-                <Route path="/profile" element={<ProfilePage />}>
-                  <Route index element={<PersonalInfo />} />
-                  <Route path="security" element={<SecurityPage />} />
-                  <Route path="personal" element={<PersonalInfo />} />
-                </Route>
-
-                <Route path="register" element={<RegisterPage />} />
-                <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
-
+                <Route path="/*" element={<ProtectedRoutes />} />
+                <Route path="/auth/*" element={<AuthRoutes />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </div>

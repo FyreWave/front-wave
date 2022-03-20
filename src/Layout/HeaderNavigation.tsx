@@ -10,7 +10,7 @@ const HeaderNavigation = () => {
 
   return (
     <div>
-      <nav className="border-b-2 py-4">
+      <nav className="border-b-2 py-4 px-4">
         <div className="flex justify-between">
           <Link to="/" className="flex">
             <div>
