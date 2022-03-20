@@ -1,13 +1,10 @@
 import { useState } from "react";
 import NavigationLinks from "../components/NavigationLinks";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const HeaderNavigation = () => {
-  // let name = "Ezeh";
-
-  const [name, setName] = useState("Ezeh");
-  const [amount, setAmount] = useState(123456);
-
   return (
     <div>
       <nav className="border-b-2 py-4 px-4">
@@ -32,12 +29,6 @@ const HeaderNavigation = () => {
             </div>
           </Link>
           <NavigationLinks />
-        </div>
-        <div className="pt-4">
-          <h1 className=" big-title">
-            Hello {name}, {amount}
-          </h1>
-          <h1>{}</h1>
         </div>
       </nav>
     </div>

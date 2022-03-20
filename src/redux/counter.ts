@@ -8,7 +8,7 @@ export interface CounterState {
 
 const initialState: CounterState = {
   counter: 0,
-  menuState: true,
+  menuState: false,
   username: "Sam",
 };
 

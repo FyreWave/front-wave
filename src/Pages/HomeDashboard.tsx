@@ -1,8 +1,12 @@
 import DepositHistoryComponent from "../components/DepositHistoryComponent";
 import WavesComponent from "../components/waveComponents/WavesComponent";
 import { $axios } from "../http/http.Service";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const HomeDashboard = () => {
+  const username = useSelector((state: RootState) => state.user.username);
+
   const testAxios = () => {
     $axios.get("/waves").then((res) => {
       console.log(res, "here");
@@ -15,6 +19,8 @@ const HomeDashboard = () => {
     <div>
       <div className="pt-10">
         <div>
+          <h1 className=" big-title">Hello {username}</h1>
+
           <div className="grid md:grid-cols-2 gap-x-4">
             <div className="">
               <div className="Dashboard-tile h-40">
