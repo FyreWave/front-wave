@@ -1,13 +1,21 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { text } from "stream/consumers";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
 const NavigationLinks = () => {
+  const navigate = useNavigate();
+  function handleClick() {
+    localStorage.removeItem("cms-hit");
+    // navigate("/auth/login");
+    window.location.href = "/";
+
+    console.log("clicked");
+  }
   const isLoggedIn = useSelector((state: RootState) => state.user.username);
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-4 items-center">
       <NavLink to="/">Home</NavLink>
       <Link to="/create">Create</Link>
       <NavLink to="/create">All Waves</NavLink>
@@ -15,8 +23,12 @@ const NavigationLinks = () => {
       <NavLink to="/profile">Profile</NavLink>
       {isLoggedIn ? (
         <div>
-          <button className="bg-red-400 rounded-md px-2 text-sm p-1">
-            Logout??
+          <button
+            onClick={handleClick}
+            className="bg-secondary-500 text-white rounded-md px-3 text-sm p-1"
+          >
+            <i className="fa-solid fa-arrow-right-from-bracket pr-2" />
+            Logout
           </button>
         </div>
       ) : (

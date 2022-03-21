@@ -1,14 +1,20 @@
 import { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { $axios } from "../http/http.Service";
 
 const createWavePage = () => {
   // console.log(import.meta.env.DEV);
   // handle object
 
   //single input
-  const [waveName, setWaveName] = useState("Buy car for Sam");
-  const [waveAmount, setWaveAmount] = useState("2,000,000");
-  const [waveDate, setWaveDate] = useState("");
+  const [waveData, setWaveData] = useState({
+    waveName: "Buy car for Sam",
+    waveDescription: "this is a description of why sam need money",
+    targetAmount: "20000",
+    dueDate: "2022-04-21",
+    waveCategory: "",
+  });
+
   const [isPending, setIsPending] = useState(false);
 
   const history = useNavigate();
@@ -16,25 +22,20 @@ const createWavePage = () => {
   const [waveType, setWaveType] = useState("group");
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const WaveData = {
-      title: waveName,
-      goal: waveAmount,
-      type: waveType,
-      date: waveDate,
-    };
 
     setIsPending(true);
 
-    fetch("http://localhost:5100/waves", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(WaveData),
-    }).then(() => {
-      setIsPending(false);
-      history("/");
-    });
+    $axios
+      .post("client/make-wave", waveData)
+      .then((res) => {
+        console.log(res);
+        setIsPending(false);
+        history("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsPending(false);
+      });
 
     // .catch((err) => console.log(err));
   };
@@ -42,6 +43,18 @@ const createWavePage = () => {
   return (
     <div>
       <h2>Create a new Wave</h2>
+
+      {waveData.waveName}
+      <br />
+      {waveData.waveDescription}
+      <br />
+      {waveData.targetAmount}
+
+      <br />
+      {waveData.dueDate}
+
+      <br />
+      {waveData.waveCategory}
 
       <div className="flex justify-center">
         <div className="bg-white w-full py-32 ">
@@ -52,10 +65,30 @@ const createWavePage = () => {
                   <br />
                   <div>
                     <label>Wave name:</label>
-                    <textarea
-                      value={waveName}
-                      onChange={(e) => setWaveName(e.target.value)}
+                    <input
+                      value={waveData.waveName}
+                      onChange={(e) =>
+                        setWaveData({
+                          ...waveData,
+                          waveName: e.target.value,
+                        })
+                      }
                       className="form-input"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label>Wave Description:</label>
+                    <textarea
+                      value={waveData.waveDescription}
+                      onChange={(e) =>
+                        setWaveData({
+                          ...waveData,
+                          waveDescription: e.target.value,
+                        })
+                      }
+                      className="form-input"
+                      rows={5}
                       required
                     />
                   </div>
@@ -65,8 +98,13 @@ const createWavePage = () => {
                     <input
                       type="number"
                       className="form-input "
-                      value={waveAmount}
-                      onChange={(e) => setWaveAmount(e.target.value)}
+                      value={waveData.targetAmount}
+                      onChange={(e) =>
+                        setWaveData({
+                          ...waveData,
+                          targetAmount: e.target.value,
+                        })
+                      }
                       required
                     />
                   </div>
@@ -74,8 +112,13 @@ const createWavePage = () => {
                   <div>
                     <label>Due Date:</label>
                     <input
-                      value={waveDate}
-                      onChange={(e) => setWaveDate(e.target.value)}
+                      value={waveData.dueDate}
+                      onChange={(e) =>
+                        setWaveData({
+                          ...waveData,
+                          dueDate: e.target.value,
+                        })
+                      }
                       className="form-input"
                       type="date"
                       required
@@ -87,11 +130,16 @@ const createWavePage = () => {
 
                     <select
                       className="form-input"
-                      value={waveType}
-                      onChange={(e) => setWaveType(e.target.value)}
+                      value={waveData.waveCategory}
+                      onChange={(e) =>
+                        setWaveData({
+                          ...waveData,
+                          waveCategory: e.target.value,
+                        })
+                      }
                     >
                       <option value="group">Group Savings</option>
-                      <option value="other">Crowdfunding</option>
+                      <option value="crowd">Crowd funding</option>
                     </select>
                   </div>
 

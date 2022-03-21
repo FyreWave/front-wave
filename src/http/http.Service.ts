@@ -1,9 +1,24 @@
 import axios from "axios";
 const env = process.env.NODE_ENV;
 
-console.log("http.Service.ts", env);
 // Create axios instance.
-const url = `http://localhost:5100/`;
+const url = `http://localhost:5300/api`;
+
+const isAuth = localStorage.getItem("cms-hit");
+
+console.log(isAuth, "isAuth");
+
+if (isAuth) {
+  // @ts-ignore
+  axios.defaults.headers["cms-hit"] = isAuth as string;
+
+  if (env === "development") {
+    const envValue = "http://_??_:5300";
+    axios.defaults.baseURL = envValue.replace("_??_", window.location.hostname);
+  } else if (env === "production") {
+    // axios.defaults.baseURL = appBaseURL as string;
+  }
+}
 
 axios.defaults.baseURL = url;
 
@@ -13,7 +28,6 @@ axios.interceptors.response.use(
   (res) => {
     // Alert message if present
     if (res.data && res.data.message) {
-      console.log("i go here");
       // $alert.success(res.data.message);
     }
 

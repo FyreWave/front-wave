@@ -7,14 +7,6 @@ import { RootState } from "../redux/store";
 const HomeDashboard = () => {
   const username = useSelector((state: RootState) => state.user.username);
 
-  const testAxios = () => {
-    $axios.get("/waves").then((res) => {
-      console.log(res, "here");
-    });
-  };
-
-  testAxios();
-
   return (
     <div>
       <div className="pt-10">

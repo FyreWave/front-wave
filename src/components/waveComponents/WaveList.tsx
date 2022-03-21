@@ -1,6 +1,7 @@
 import { WavesDataType } from "../../types/modelsTypings";
 
 import { Link } from "react-router-dom";
+import moment from "moment/moment";
 
 const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
   const waves = props.waves;
@@ -14,14 +15,19 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
             <div className="py-6">
               <div className="flex justify-between">
                 <div>
-                  <Link to={`/view-wave/${wave.id}`}>
-                    <h2 className="text-xl font-bold">{wave.title}</h2>
+                  <Link to={`/view-wave/${wave._id}`}>
+                    <h2 className="text-xl font-bold">{wave.waveName}</h2>
+                    <p className="text-xs ">{wave.waveDescription}</p>
                   </Link>
                   <p className="font-bold py-1 text-sm goal-color">
-                    Goal: &#8358;{wave.goal}
+                    Goal: &#8358;{wave.targetAmount}
                   </p>
                   <p className="text-xs text-gray-500 font-bold">
-                    Due: {wave.date}
+                    Due: {moment(wave.dueDate).format("MMM Do YYYY")}
+                    <span className="text-xs italic">
+                      {" "}
+                      ({moment(wave.dueDate, "YYYYMMDD").fromNow()})
+                    </span>
                   </p>
                 </div>
                 <div>

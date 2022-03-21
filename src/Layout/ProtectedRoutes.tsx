@@ -19,8 +19,8 @@ const ProtectedRoutes = () => {
       <div className="container mx-auto px-4">
         <Routes>
           <Route path="/" element={<ProtectedLayouts />}>
-            <Route path="/create" element={<CreateWavePage />} />
-            <Route path="/profile" element={<ProfilePage />}>
+            <Route path="create" element={<CreateWavePage />} />
+            <Route path="profile" element={<ProfilePage />}>
               <Route index element={<PersonalInfo />} />
               <Route path="security" element={<SecurityPage />} />
               <Route path="personal" element={<PersonalInfo />} />

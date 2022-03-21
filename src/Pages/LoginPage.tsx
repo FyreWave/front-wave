@@ -1,7 +1,30 @@
 import logo from "../assets/logo/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { $axios } from "../http/http.Service";
+import { useState } from "react";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    password: "123456",
+    email: "admin@gmail.com",
+    mobile: "",
+  });
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    $axios
+      .post("/client/login", loginData)
+      .then((res: any) => {
+        console.log(res.token);
+        localStorage.setItem("cms-hit", res.token);
+        // navigate("/");
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div className="bg-primary-500">
       <div className="h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -12,29 +35,55 @@ const LoginPage = () => {
                 <img className="mx-auto h-12 w-auto" src={logo} />
               </Link>
             </div>
-            <form className="space-y-6" action="#" method="POST">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+              action="#"
+              method="POST"
+            >
               <div>
                 <label
                   htmlFor="mobile"
-                  className="block text-sm text-center mt-8 text-gray-700"
-                />
-                <div className="mt-8">
-                  <label>Email / Mobile:</label>
-
+                  className="block text-sm mt-8 text-gray-700"
+                >
+                  Enter your phone number
+                </label>
+                <div className="">
                   <input
                     name="phonenumber"
                     type="text"
                     autoComplete="email"
+                    value={loginData.email}
+                    onChange={(e) =>
+                      setLoginData({
+                        ...loginData,
+                        email: e.target.value,
+                      })
+                    }
                     required
                     className="appearance-none block w-full px-3 py-2 border-b-2 border-secondary-600 placeholder-gray-400 focus:outline-none focus:ring-secondary-800 focus:border-secondary-800 sm:text-lg"
                   />
                 </div>
-                <div className="mt-8">
-                  <label>Password:</label>
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm mt-8 text-gray-700"
+                >
+                  Password
+                </label>
+                <div className="">
                   <input
-                    name="phonenumber"
+                    name="password"
                     type="text"
-                    autoComplete="email"
+                    value={loginData.password}
+                    onChange={(e) =>
+                      setLoginData({
+                        ...loginData,
+                        password: e.target.value,
+                      })
+                    }
+                    autoComplete="password"
                     required
                     className="appearance-none block w-full px-3 py-2 border-b-2 border-secondary-600 placeholder-gray-400 focus:outline-none focus:ring-secondary-800 focus:border-secondary-800 sm:text-lg"
                   />
@@ -54,6 +103,9 @@ const LoginPage = () => {
                     <Link to="/">
                       <p className="text-center pt-4 underline"> Home</p>
                     </Link>
+                    <Link to="/auth/register">
+                      <p className="text-center pt-4 underline"> Register</p>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -65,4 +117,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

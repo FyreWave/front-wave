@@ -5,14 +5,14 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  username: "mary",
+  username: "",
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<string>) => {
+    setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
     },
     logOut: (state) => {
@@ -22,6 +22,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { login, logOut } = userSlice.actions;
+export const { setUsername, logOut } = userSlice.actions;
 
 export default userSlice.reducer;
