@@ -15,7 +15,7 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
             <div className="py-6">
               <div className="flex justify-between">
                 <div>
-                  <Link to={`/view-wave/${wave._id}`}>
+                  <Link to={`/view-wave/${wave.slug}`}>
                     <h2 className="text-xl font-bold">{wave.waveName}</h2>
                     <p className="text-xs ">{wave.waveDescription}</p>
                   </Link>

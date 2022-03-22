@@ -1,3 +1,5 @@
+import moment from "moment/moment";
+
 const directory = {
   A: [
     {
@@ -210,12 +212,14 @@ const WaveUsers = (props: any) => {
     <div className="h-[800px] p-10">
       <section>
         <div>
-          <h1 className="text-white font-bold">{wave.title}</h1>
+          <h1 className="text-white font-bold capitalize">{wave.waveName}</h1>
           <h1 className=" font-bold text-primary-200 font-semibold text-3xl">
-            {wave.goal}
+            {wave.targetAmountl}
           </h1>
           <progress className="rounded-full" />
-          <p className="text-white font-bold">{wave.date}</p>
+          <p className="text-white font-bold">
+            {moment(wave.dueDate).format("MMM Do YYYY")}
+          </p>
 
           <div>
             <button className="regular-button my-4">Initiate Withdrawal</button>

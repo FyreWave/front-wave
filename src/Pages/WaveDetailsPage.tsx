@@ -3,9 +3,10 @@ import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
 import useFetch from "../libs/useFetch";
 import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TabView from "../components/waveComponents/TabView";
 import { Tab } from "@headlessui/react";
+import { $axios } from "../http/http.Service";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -19,13 +20,29 @@ const WaveDetailsPage = () => {
   const waveId = params.waveId;
   const history = useNavigate();
 
-  const {
-    data: wave,
-    isError,
-    isLoading,
-  } = useFetch(
-    "http://localhost:5100/waves/" + waveId
-  ) as unknown as WaveDataState;
+  const [isPending, setIsPending] = useState(true);
+  const [isError, setError] = useState(null);
+
+  const [wave, setWave] = useState([]);
+
+  function getWave() {
+    $axios
+      .get(`client/get-wave/${waveId}`)
+      .then((res: any) => {
+        setWave(res.wave);
+        setIsPending(false);
+        console.log(res.wave);
+      })
+      .catch((err) => {
+        setError(err);
+        setIsPending(false);
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    getWave();
+  }, []);
 
   const deleteWave = () => {
     fetch("http://localhost:5100/waves/" + waveId, {
@@ -37,7 +54,7 @@ const WaveDetailsPage = () => {
   return (
     <div>
       <div>
-        {isLoading && <div>Loading...</div>}
+        {isPending && <div>Loading...</div>}
         {isError && <div>Error</div>}
         {wave && (
           <div>
