@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
 const HomeDashboard = () => {
-  const username = useSelector((state: RootState) => state.user.username);
+  const user = useSelector((state: RootState) => state.user.user);
 
   return (
     <div>
       <div className="pt-10">
         <div>
-          <h1 className=" big-title">Hello {username}</h1>
+          <h1 className=" big-title">Hello {user?.username}</h1>
 
           <div className="grid md:grid-cols-2 gap-x-4">
             <div className="">

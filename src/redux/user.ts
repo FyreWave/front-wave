@@ -1,27 +1,47 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface UserState {
-  username: string;
+  user: {
+    email: string;
+    lastSeen: number;
+    username: string;
+  } | null;
+  isLoading: boolean;
+  isError: boolean;
+  isLoggedIn: boolean;
 }
 
 const initialState: UserState = {
-  username: "",
+  user: null,
+  isLoggedIn: false,
+  isLoading: false,
+  isError: false,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUsername: (state, action: PayloadAction<string>) => {
-      state.username = action.payload;
+    startLoading: (state) => {
+      state.isLoading = true;
     },
-    logOut: (state) => {
-      state.username = "";
+    hasError: (state, action) => {
+      state.isError = action.payload;
+      state.isLoading = false;
+    },
+
+    setUser: (state, action: PayloadAction<any>) => {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
+    logOut: (state, action) => {
+      state.user = action.payload;
+      state.isLoggedIn = false;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUsername, logOut } = userSlice.actions;
+export const { setUser, logOut, hasError, startLoading } = userSlice.actions;
 
 export default userSlice.reducer;

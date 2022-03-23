@@ -19,7 +19,6 @@ const createWavePage = () => {
 
   const history = useNavigate();
 
-  const [waveType, setWaveType] = useState("group");
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -49,13 +48,10 @@ const createWavePage = () => {
       {waveData.waveDescription}
       <br />
       {waveData.targetAmount}
-
       <br />
       {waveData.dueDate}
-
       <br />
       {waveData.waveCategory}
-
       <div className="flex justify-center">
         <div className="bg-white w-full py-32 ">
           <div className="flex justify-center">

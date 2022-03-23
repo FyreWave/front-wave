@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import HomeDashboard from "./HomeDashboard";
+import { Route, Routes, useNavigate } from "react-router-dom";
+
 import SideBar from "../components/SideBar";
 
 import NotFoundPage from "./NotFoundPage";
 
 import ProtectedRoutes from "../Layout/ProtectedRoutes";
-import AuthRoutes from "../Layout/AuthRoutes";
-import ReduxTestComponents from "../components/ReduxTestComponents";
+import GuestRoutes from "../Layout/GuestRoutes";
+
 import { $axios } from "../http/http.Service";
-import { useDispatch } from "react-redux";
-import { setUsername } from "../redux/user";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../redux/user";
+import PreloaderComponent from "../components/PreloaderComponent";
 
 function App() {
   const [isPending, setIsPending] = useState(true);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function ping() {
+    setIsPending(true);
     $axios
       .get("/client/ping")
       .then((res: any) => {
-        dispatch(setUsername(res.user.username));
+        console.log(res);
+        if (!res.user) {
+          navigate("/auth/login");
+        } else {
+          dispatch(setUser(res.user));
+        }
         setIsPending(false);
-        console.log(res, "ping");
       })
       .catch((err: any) => {
-        setIsPending(false);
-
         console.log(err);
+        setIsPending(false);
       });
   }
 
@@ -38,7 +44,9 @@ function App() {
   return (
     <div className="App">
       {isPending ? (
-        <div>Loading...</div>
+        <div>
+          <PreloaderComponent />
+        </div>
       ) : (
         <div className="flex">
           <div className=" hidden">
@@ -51,7 +59,8 @@ function App() {
               <div>
                 <Routes>
                   <Route path="/*" element={<ProtectedRoutes />} />
-                  <Route path="/auth/*" element={<AuthRoutes />} />
+
+                  <Route path="/auth/*" element={<GuestRoutes />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </div>

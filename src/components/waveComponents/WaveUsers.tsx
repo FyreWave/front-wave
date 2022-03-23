@@ -214,7 +214,7 @@ const WaveUsers = (props: any) => {
         <div>
           <h1 className="text-white font-bold capitalize">{wave.waveName}</h1>
           <h1 className=" font-bold text-primary-200 font-semibold text-3xl">
-            {wave.targetAmountl}
+            {wave.targetAmount}
           </h1>
           <progress className="rounded-full" />
           <p className="text-white font-bold">

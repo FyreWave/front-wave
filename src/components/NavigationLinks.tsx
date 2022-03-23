@@ -1,19 +1,18 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { text } from "stream/consumers";
-import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { setUser } from "../redux/user";
 
 const NavigationLinks = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   function handleClick() {
     localStorage.removeItem("cms-hit");
-    // navigate("/auth/login");
+    localStorage.removeItem("isLoggedIn");
+    dispatch(setUser(null));
     window.location.href = "/";
-
-    console.log("clicked");
   }
-  const isLoggedIn = useSelector((state: RootState) => state.user.username);
-
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  console.log(isLoggedIn, "check looged in state");
   return (
     <div className="flex space-x-4 items-center">
       <NavLink to="/">Home</NavLink>

@@ -14,11 +14,12 @@ const RegisterPage = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     $axios
-      .post("/client/login", loginData)
+      .post("/auth/login", loginData)
       .then((res: any) => {
         console.log(res.token);
         localStorage.setItem("cms-hit", res.token);
-        // navigate("/");
+        localStorage.setItem("isLoggedIn", String(true));
+
         window.location.href = "/";
       })
       .catch((err) => {
