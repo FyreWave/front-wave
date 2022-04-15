@@ -212,7 +212,9 @@ const WaveUsers = (props: any) => {
     <div className="h-[800px] p-10">
       <section>
         <div>
-          <h1 className="text-white font-bold capitalize">{wave.waveName}</h1>
+          <h1 className="text-white text-2xl font-bold capitalize">
+            {wave.waveName}
+          </h1>
           <h1 className=" font-bold text-primary-200 font-semibold text-3xl">
             {wave.targetAmount}
           </h1>
@@ -221,67 +223,71 @@ const WaveUsers = (props: any) => {
             {moment(wave.dueDate).format("MMM Do YYYY")}
           </p>
 
-          <div>
+          <div className="flex space-x-4">
             <button className="regular-button my-4">Initiate Withdrawal</button>
+            <button className="regular-button my-4">Deposit</button>
           </div>
         </div>
       </section>
+      <hr />
       <div>
         <ul>
-          <li className="text-white">waver</li>
+          <li className="text-white">Wavers</li>
         </ul>
       </div>
-      <div className="h-[500px]">
-        <nav className="h-full overflow-y-auto" aria-label="Directory">
-          {Object.keys(directory).map((letter) => (
-            <div key={letter} className="relative">
-              <div className="z-10 sticky top-0  bg-secondary-700 px-6 py-1 text-sm font-medium text-gray-500">
-                <h3 className="text-white">{letter}</h3>
-              </div>
-              <ul role="list" className="relative z-0">
-                {directory[letter].map((person: any) => (
-                  <li key={person.id} className="bg-secondary-400">
-                    <div className="flex justify-between items-center">
-                      <div className="relative px-6 py-5 flex items-center space-x-3 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                        <div className="flex-shrink-0">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={person.imageUrl}
-                            alt=""
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <a href="#" className="focus:outline-none">
-                            {/* Extend touch target to entire panel */}
-                            <span
-                              className="absolute inset-0"
-                              aria-hidden="true"
+      <div className="hidden">
+        <div className="h-[500px]">
+          <nav className="h-full overflow-y-auto" aria-label="Directory">
+            {Object.keys(directory).map((letter) => (
+              <div key={letter} className="relative">
+                <div className="z-10 sticky top-0  bg-secondary-700 px-6 py-1 text-sm font-medium text-gray-500">
+                  <h3 className="text-white">{letter}</h3>
+                </div>
+                <ul role="list" className="relative z-0">
+                  {directory[letter].map((person: any) => (
+                    <li key={person.id} className="bg-secondary-400">
+                      <div className="flex justify-between items-center">
+                        <div className="relative px-6 py-5 flex items-center space-x-3 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                          <div className="flex-shrink-0">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={person.imageUrl}
+                              alt=""
                             />
-                            <p className="text-sm font-medium text-white">
-                              {person.name}
-                            </p>
-                          </a>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <a href="#" className="focus:outline-none">
+                              {/* Extend touch target to entire panel */}
+                              <span
+                                className="absolute inset-0"
+                                aria-hidden="true"
+                              />
+                              <p className="text-sm font-medium text-white">
+                                {person.name}
+                              </p>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                      <div className="grid grid-cols-2  items-center gap-4 ">
-                        <div className="">
-                          <h2 className="text-white ">N75,000,00</h2>
-                        </div>
-                        <div className="">
-                          <div className="bg-primary-500 w-12  rounded-lg">
-                            <div className="text-secondary-500 text-center font-semibold text-md py-2">
-                              57%
+                        <div className="grid grid-cols-2  items-center gap-4 ">
+                          <div className="">
+                            <h2 className="text-white ">N75,000,00</h2>
+                          </div>
+                          <div className="">
+                            <div className="bg-primary-500 w-12  rounded-lg">
+                              <div className="text-secondary-500 text-center font-semibold text-md py-2">
+                                57%
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </nav>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
       </div>
 
       <h1 className="underline text-center text-white mt-4">

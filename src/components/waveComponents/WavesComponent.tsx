@@ -29,7 +29,7 @@ const WavesComponent = () => {
   }, []);
 
   return (
-    <div className="">
+    <div>
       {isError && <div>{isError}</div>}
       {isPending && <div>Is loading...</div>}
       {waves && <WaveList waves={waves} title="Your Waves" />}

@@ -49,8 +49,8 @@ function App() {
         </div>
       ) : (
         <div className="flex">
-          <div className=" hidden">
-            <div className="">
+          <div className="hidden">
+            <div>
               <SideBar />
             </div>
           </div>

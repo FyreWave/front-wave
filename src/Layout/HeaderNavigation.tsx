@@ -3,12 +3,26 @@ import NavigationLinks from "../components/NavigationLinks";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-
+import ToggleMenuButton from "../components/ToggleMenuButton";
 const HeaderNavigation = () => {
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = () => {
+    setIsShown(!isShown);
+    console.log("click header");
+  };
   return (
     <div>
+      {isShown && (
+        <div className="absolute">
+          <div className="bg-secondary-500 h-[1000px] w-screen overflow-y-hidden ">
+            hide me
+          </div>
+        </div>
+      )}
+
       <nav className="border-b-2 py-4 px-4">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <Link to="/" className="flex">
             <div>
               <svg
@@ -29,6 +43,10 @@ const HeaderNavigation = () => {
             </div>
           </Link>
           <NavigationLinks />
+
+          {/*//notification and  profile picture*/}
+
+          <ToggleMenuButton isShown={isShown} handleClick={handleClick} />
         </div>
       </nav>
     </div>

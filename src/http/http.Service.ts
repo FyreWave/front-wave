@@ -2,11 +2,11 @@ import axios from "axios";
 const env = process.env.NODE_ENV;
 
 // Create axios instance.
-const url = `http://localhost:5300/api`;
+const url = `${import.meta.env.VITE_API_URL}/api`;
+
+console.log(url, "build****");
 
 const isAuth = localStorage.getItem("cms-hit");
-
-console.log(isAuth, "isAuth");
 
 if (isAuth) {
   // @ts-ignore

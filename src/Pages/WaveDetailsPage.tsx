@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import TabView from "../components/waveComponents/TabView";
 import { Tab } from "@headlessui/react";
 import { $axios } from "../http/http.Service";
+import PreloaderComponent from "../components/PreloaderComponent";
+import MakePayment from "../components/waveComponents/MakePayment";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -40,6 +42,17 @@ const WaveDetailsPage = () => {
       });
   }
 
+  function generateLink() {
+    $axios
+      .post(`link/generate-link/`, wave)
+      .then((res: any) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
     getWave();
   }, []);
@@ -58,6 +71,34 @@ const WaveDetailsPage = () => {
         {isError && <div>Error</div>}
         {wave && (
           <div>
+            <div>
+              <MakePayment />
+            </div>
+
+            <div>
+              <h1>Link</h1>
+              <div className="bg-white">
+                <div className="flex items-center">
+                  <input
+                    value="https://www.fyrewave.com/api/payment/payment-callback"
+                    className="bg-gray-100 m-4 py-1 text-green-600"
+                    type="text"
+                    disabled
+                  />
+                  <button className="rounded-full border-2 border-green-200 h-10 w-10 hover:">
+                    <i className="fa-regular fa-copy text-green-500" />
+                  </button>
+
+                  <button
+                    onClick={generateLink}
+                    className="text-green-500 underline"
+                  >
+                    Generate Link
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="hidden md:block">
               <div className="grid md:grid-cols-2">
                 <div className="bg-white">
