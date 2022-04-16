@@ -24,7 +24,6 @@ function App() {
     $axios
       .get("/client/ping")
       .then((res: any) => {
-        console.log(res);
         if (!res.user) {
           navigate("/auth/login");
         } else {
@@ -33,7 +32,6 @@ function App() {
         setIsPending(false);
       })
       .catch((err: any) => {
-        console.log(err);
         setIsPending(false);
       });
   }

@@ -4,8 +4,6 @@ const env = process.env.NODE_ENV;
 // Create axios instance.
 const url = `${import.meta.env.VITE_API_URL}/api`;
 
-console.log(url, "build****");
-
 const isAuth = localStorage.getItem("cms-hit");
 
 if (isAuth) {

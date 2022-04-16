@@ -1,26 +1,18 @@
 import { useState } from "react";
 import NavigationLinks from "../components/NavigationLinks";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+
 import ToggleMenuButton from "../components/ToggleMenuButton";
+import ModalComponent from "../components/ModalComponent";
 const HeaderNavigation = () => {
-  const [isShown, setIsShown] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleClick = () => {
-    setIsShown(!isShown);
+    setIsOpen(!isOpen);
     console.log("click header");
   };
   return (
     <div>
-      {isShown && (
-        <div className="absolute">
-          <div className="bg-secondary-500 h-[1000px] w-screen overflow-y-hidden ">
-            hide me
-          </div>
-        </div>
-      )}
-
       <nav className="border-b-2 py-4 px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex">
@@ -46,7 +38,14 @@ const HeaderNavigation = () => {
 
           {/*//notification and  profile picture*/}
 
-          <ToggleMenuButton isShown={isShown} handleClick={handleClick} />
+          <ToggleMenuButton isOpen={isOpen} handleClick={handleClick} />
+          <ModalComponent isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <div className="">
+              <div className="">
+                <p className="text-white"> hide me</p>
+              </div>
+            </div>
+          </ModalComponent>
         </div>
       </nav>
     </div>

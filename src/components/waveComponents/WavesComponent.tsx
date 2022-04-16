@@ -15,12 +15,10 @@ const WavesComponent = () => {
       .then((res: any) => {
         setWaves(res.waves);
         setIsPending(false);
-        console.log(res.waves);
       })
       .catch((err) => {
         setError(err);
         setIsPending(false);
-        console.log(err);
       });
   }
 
