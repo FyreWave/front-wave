@@ -1,4 +1,6 @@
 import moment from "moment/moment";
+import { Link } from "react-router-dom";
+import React from "react";
 
 const directory = {
   A: [
@@ -223,9 +225,11 @@ const WaveUsers = (props: any) => {
             {moment(wave.dueDate).format("MMM Do YYYY")}
           </p>
 
-          <div className="flex space-x-4">
+          <div className="flex items-center gap-x-4">
             <button className="regular-button my-4">Initiate Withdrawal</button>
-            <button className="regular-button my-4">Deposit</button>
+            <Link className="regular-button" to="/add-money">
+              add-money
+            </Link>
           </div>
         </div>
       </section>

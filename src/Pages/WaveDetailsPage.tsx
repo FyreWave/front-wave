@@ -77,7 +77,7 @@ const WaveDetailsPage = () => {
 
             <div>
               <h1>Link</h1>
-              <div className="bg-white rounded-lg">
+              <div className="">
                 <div className="flex items-center">
                   <input
                     value="https://www.fyrewave.com/api/payment/payment-callback"
@@ -101,7 +101,7 @@ const WaveDetailsPage = () => {
 
             <div className="hidden md:block">
               <div className="grid md:grid-cols-2">
-                <div className="bg-white">
+                <div className="">
                   <WaveActivities />
                 </div>
                 <div className="">
