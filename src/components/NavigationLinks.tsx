@@ -16,7 +16,7 @@ const NavigationLinks = () => {
     <>
       <div>
         {/*//TODO: Add lg:block to the nav links*/}
-        <div className="hidden">
+        <div className="hidden lg:block">
           <div className="flex space-x-4 items-center">
             <NavLink to="/">Home</NavLink>
             <Link to="/create">Create</Link>

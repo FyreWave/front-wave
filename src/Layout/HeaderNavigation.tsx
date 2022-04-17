@@ -4,12 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 
 import ToggleMenuButton from "../components/ToggleMenuButton";
 import ModalComponent from "../components/ModalComponent";
+import MobileMenuComponent from "../components/MobileMenuComponent";
 const HeaderNavigation = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
-    console.log("click header");
   };
   return (
     <div>
@@ -38,13 +38,14 @@ const HeaderNavigation = () => {
 
           {/*//notification and  profile picture*/}
 
-          <ToggleMenuButton isOpen={isOpen} handleClick={handleClick} />
+          <div className="lg:hidden">
+            <ToggleMenuButton isOpen={isOpen} handleClick={handleClick} />
+          </div>
           <ModalComponent isOpen={isOpen} onClose={() => setIsOpen(false)}>
-            <div className="">
-              <div className="">
-                <p className="text-white"> hide me</p>
-              </div>
-            </div>
+            <MobileMenuComponent
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+            />
           </ModalComponent>
         </div>
       </nav>

@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 
 const MODAL_STYLES = {
   position: "fixed",
-  top: "50%",
+  top: "48%",
+  right: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   zIndex: "9999",
-  background: "red",
-
+  height: "100%",
   padding: "20px",
 } as React.CSSProperties;
 
@@ -34,12 +34,7 @@ export default function ModalComponent(props: any) {
     <>
       <div>
         <div style={OVERLAY_STYLES} />
-        <div style={MODAL_STYLES}>
-          <button onClick={onClose}>
-            <i className="fas fa-times text-4xl p-2"></i>
-          </button>
-          {children}
-        </div>
+        <div style={MODAL_STYLES}>{children}</div>
       </div>
     </>,
     document.getElementById("portal") as HTMLElement

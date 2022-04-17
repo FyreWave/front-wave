@@ -16,7 +16,7 @@ const ProtectedRoutes = () => {
   return (
     <>
       <HeaderNavigation />
-      <div className="container mx-auto ">
+      <div className="container mx-auto pt-10 px-40">
         <Routes>
           <Route path="/" element={<ProtectedLayouts />}>
             <Route path="create" element={<CreateWavePage />} />

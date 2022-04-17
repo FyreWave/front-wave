@@ -9,7 +9,7 @@ const HomeDashboard = () => {
 
   return (
     <div>
-      <div className="pt-10">
+      <div className="">
         <div>
           <h1 className=" big-title">Hello {user?.username}</h1>
 
