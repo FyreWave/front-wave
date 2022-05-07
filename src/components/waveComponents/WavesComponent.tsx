@@ -11,9 +11,9 @@ const WavesComponent = () => {
 
   function getAllWaves() {
     $axios
-      .get("client/all-waves")
+      .get("wave/get-all-waves")
       .then((res: any) => {
-        setWaves(res.waves);
+        setWaves(res.result);
         setIsPending(false);
       })
       .catch((err) => {

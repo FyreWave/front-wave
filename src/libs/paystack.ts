@@ -19,8 +19,8 @@ export function PayWithPaystack({ amount, email, uuid }: fnContext) {
     callback(response: any) {
       $axios
         .post(`/payment/payment-callback`, { reference: response.reference })
-        .catch((e) => e)
-        .finally(() => window.location.reload());
+        .catch((e) => e);
+      // .finally(() => window.location.reload());
     },
   } as Record<string, any>);
   handler.openIframe();

@@ -13,18 +13,21 @@ import ProtectedLayouts from "./ProtectedLayouts";
 import FooterArea from "./FooterArea";
 import NotFoundPage from "../Pages/NotFoundPage";
 import QuickNavigationComponent from "../components/QuickNavigationComponent";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const ProtectedRoutes = () => {
+  const user = useSelector((state: RootState) => state.user.user);
+
   return (
     <>
       <HeaderNavigation />
-
       <div className="container mx-auto pt-10 px-40">
         <div className="pt-10 pb-4">
           <QuickNavigationComponent />
         </div>
         {/*routes layout*/}
-        <div className="bg-white shadow rounded-lg p-4 h-screen">
+        <div className="bg-white shadow rounded-lg p-4 h-[1000px]">
           <Routes>
             <Route path="/" element={<ProtectedLayouts />}>
               <Route path="create" element={<CreateWavePage />} />
@@ -34,7 +37,7 @@ const ProtectedRoutes = () => {
                 <Route path="personal" element={<PersonalInfo />} />
               </Route>
               <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
-              <Route path="add-money" element={<AddMoneyPage />} />
+              <Route path="add-money/:waveId" element={<AddMoneyPage />} />
 
               <Route index element={<HomeDashboard />} />
             </Route>

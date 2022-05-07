@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React from "react";
 
 export default function QuickNavigationComponent() {
   const navigate = useNavigate();
+  const { waveId } = useParams();
 
   const goBack = () => {
     navigate(-1);
@@ -20,7 +21,7 @@ export default function QuickNavigationComponent() {
         {/*action buttons*/}
         <div className="flex gap-x-6">
           <button className="regular-button">Add Money</button>
-          <Link className="regular-button" to="/add-money">
+          <Link className="regular-button" to={`/add-money/${waveId}`}>
             add-money
           </Link>
         </div>

@@ -9,15 +9,18 @@ const RegisterPage = () => {
     password: "123456",
     email: "admin@gmail.com",
     mobile: "",
+    isEmail: true,
   });
 
   function handleSubmit(e: any) {
     e.preventDefault();
+
+    console.log(loginData);
     $axios
       .post("/auth/login", loginData)
       .then((res: any) => {
-        console.log(res.token);
-        localStorage.setItem("cms-hit", res.token);
+        console.log(res);
+        localStorage.setItem("cms-hit", res.result.token);
         localStorage.setItem("isLoggedIn", String(true));
 
         window.location.href = "/";

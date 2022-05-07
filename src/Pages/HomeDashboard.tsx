@@ -10,10 +10,10 @@ const HomeDashboard = () => {
   return (
     <div>
       <div className="">
-        <div>
+        <div className="">
           <h1 className=" big-title">Hello {user?.username}</h1>
 
-          <div className="grid md:grid-cols-2 gap-x-4">
+          <div className="grid md:grid-cols-2 gap-x-4 ">
             <div className="">
               <div className="Dashboard-tile h-40">
                 <div className="p-4">
