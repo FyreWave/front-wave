@@ -15,6 +15,7 @@ import NotFoundPage from "../Pages/NotFoundPage";
 import QuickNavigationComponent from "../components/QuickNavigationComponent";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import WaveSummaryPage from "../Pages/WaveSummaryPage";
 
 const ProtectedRoutes = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -37,6 +38,10 @@ const ProtectedRoutes = () => {
                 <Route path="personal" element={<PersonalInfo />} />
               </Route>
               <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
+              <Route
+                path="wave-summary/:reference"
+                element={<WaveSummaryPage />}
+              />
               <Route path="add-money/:waveId" element={<AddMoneyPage />} />
 
               <Route index element={<HomeDashboard />} />

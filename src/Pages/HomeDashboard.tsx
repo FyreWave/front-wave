@@ -11,7 +11,9 @@ const HomeDashboard = () => {
     <div>
       <div className="">
         <div className="">
-          <h1 className=" big-title">Hello {user?.username}</h1>
+          <h1 className=" big-title">
+            Hello {user?.username ? user?.username : user?.email}
+          </h1>
 
           <div className="grid md:grid-cols-2 gap-x-4 ">
             <div className="">

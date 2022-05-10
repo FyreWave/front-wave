@@ -2,13 +2,11 @@ import React from "react";
 import { loadScriptAsync, PayWithPaystack } from "../../libs/paystack";
 
 export default function MakePayment() {
-  console.log("MakePayment", import.meta.env.VITE_PAYSTACK_API);
-
   loadScriptAsync("https://js.paystack.co/v1/inline.js").then(() => {});
 
   function pay_with_paystack() {
     PayWithPaystack({
-      amount: 10000,
+      amount: 9000,
       email: "auser@gmail.com",
       uuid: "123456789",
     });

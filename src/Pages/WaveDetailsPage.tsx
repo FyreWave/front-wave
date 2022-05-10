@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { RouteParamsType, WaveDataState } from "../types/modelsTypings";
-import useFetch from "../libs/useFetch";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import WaveUsers from "../components/waveComponents/WaveUsers";
 import WaveActivities from "../components/waveComponents/WaveActivities";
 import { useEffect, useState } from "react";
@@ -29,16 +28,14 @@ const WaveDetailsPage = () => {
 
   function getWave() {
     $axios
-      .get(`client/get-wave/${waveId}`)
+      .get(`wave/get-wave/${waveId}`)
       .then((res: any) => {
         setWave(res.wave);
         setIsPending(false);
-        console.log(res.wave);
       })
       .catch((err) => {
         setError(err);
         setIsPending(false);
-        console.log(err);
       });
   }
 
@@ -53,17 +50,24 @@ const WaveDetailsPage = () => {
       });
   }
 
+  function creatTransaction() {
+    $axios
+      .post(`transaction/create-transaction`, wave)
+      .then((res: any) => {
+        console.log(res.data.result.reference);
+
+        const waveReference = res.data.result.reference;
+        history(`/wave-summary/${waveReference}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
     getWave();
   }, []);
 
-  const deleteWave = () => {
-    fetch("http://localhost:5100/waves/" + waveId, {
-      method: "DELETE",
-    }).then(() => {
-      history("/");
-    });
-  };
   return (
     <div>
       <div>
@@ -73,10 +77,13 @@ const WaveDetailsPage = () => {
           <div>
             <div>
               <MakePayment />
+              <br />
+              <button onClick={creatTransaction} className="bg-red-500">
+                Check-out
+              </button>
             </div>
 
             <div>
-              <h1>Link</h1>
               <div className="">
                 <div className="flex items-center">
                   <input
@@ -153,12 +160,6 @@ const WaveDetailsPage = () => {
             {/*  mobile view area*/}
           </div>
         )}
-      </div>
-
-      <div>
-        <button onClick={deleteWave} className="regular-button mt-4">
-          Delete Wave
-        </button>
       </div>
     </div>
   );

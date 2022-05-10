@@ -15,10 +15,12 @@ export function PayWithPaystack({ amount, email, uuid }: fnContext) {
     channels: ["card", "bank", "ussd", "bank_transfer"],
     amount: Number(amount) * 100,
     email: email,
-    ref: generateReferenceId(uuid),
+    ref: uuid,
     callback(response: any) {
       $axios
-        .post(`/payment/payment-callback`, { reference: response.reference })
+        .post(`/transaction/payment-callback`, {
+          reference: response.reference,
+        })
         .catch((e) => e);
       // .finally(() => window.location.reload());
     },

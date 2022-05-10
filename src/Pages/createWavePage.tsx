@@ -8,11 +8,11 @@ const createWavePage = () => {
 
   //single input
   const [waveData, setWaveData] = useState({
-    waveName: "Buy car for Sam",
+    waveName: "Buy car for Anthony",
     waveDescription: "this is a description of why sam need money",
-    targetAmount: "20000",
-    dueDate: "2022-04-21",
-    waveCategory: "",
+    targetAmount: "9920000",
+    dueDate: "2022-05-21",
+    waveType: "group",
   });
 
   const [isPending, setIsPending] = useState(false);
@@ -25,7 +25,7 @@ const createWavePage = () => {
     setIsPending(true);
 
     $axios
-      .post("client/make-wave", waveData)
+      .post("wave/make-wave", waveData)
       .then((res) => {
         console.log(res);
         setIsPending(false);
@@ -51,7 +51,7 @@ const createWavePage = () => {
       <br />
       {waveData.dueDate}
       <br />
-      {waveData.waveCategory}
+      {waveData.waveType}
       <div className="flex justify-center">
         <div className="bg-white w-full py-32 ">
           <div className="flex justify-center">
@@ -126,11 +126,11 @@ const createWavePage = () => {
 
                     <select
                       className="form-input"
-                      value={waveData.waveCategory}
+                      value={waveData.waveType}
                       onChange={(e) =>
                         setWaveData({
                           ...waveData,
-                          waveCategory: e.target.value,
+                          waveType: e.target.value,
                         })
                       }
                     >

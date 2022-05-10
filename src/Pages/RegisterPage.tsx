@@ -6,14 +6,16 @@ import { useState } from "react";
 const RegisterPage = () => {
   const [registerData, setRegisterData] = useState({
     password: "123456",
-    email: "admin@gmail.com",
-    mobile: "",
+    confirmPassword: "123456",
+    email: "anthony@gmail.com",
+    mobile: "12345678",
+    isEmail: true,
   });
 
   function handleSubmit(e: any) {
     e.preventDefault();
     $axios
-      .post("/client/register", registerData)
+      .post("/auth/register", registerData)
       .then((res) => {
         console.log(res);
       })
