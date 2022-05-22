@@ -74,3 +74,25 @@ button {
 .active {
   color: #00cc66;
 }
+
+
+/* progress bar setting */
+
+progress {
+  border-radius: 7px; 
+  width: 80%;
+  height: 10px;
+ 
+  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+}
+progress::-webkit-progress-bar {
+  background-color: #64F9AF   ;
+  border-radius: 7px;
+}
+progress::-webkit-progress-value {
+  background-color: #00cc66;
+  border-radius: 7px;
+}
+progress::-moz-progress-bar {
+  /* style rules */
+}

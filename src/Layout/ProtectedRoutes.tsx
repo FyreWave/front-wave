@@ -4,7 +4,7 @@ import CreateWavePage from "../Pages/createWavePage";
 import ProfilePage from "../Pages/ProfilePage";
 import PersonalInfo from "../Pages/profile/PersonalInfo";
 import SecurityPage from "../Pages/profile/SecurityPage";
-import RegisterPage from "../Pages/RegisterPage";
+import RegisterPage from "../Pages/authPages/RegisterPage";
 import WaveDetailsPage from "../Pages/WaveDetailsPage";
 import AddMoneyPage from "../Pages/AddMoneyPage";
 import React from "react";
@@ -16,6 +16,8 @@ import QuickNavigationComponent from "../components/QuickNavigationComponent";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import WaveSummaryPage from "../Pages/WaveSummaryPage";
+import AllDepositHistory from "../Pages/AllDepositHistoryPage";
+import AllWavesPage from "../Pages/AllWavesPage";
 
 const ProtectedRoutes = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -32,6 +34,12 @@ const ProtectedRoutes = () => {
           <Routes>
             <Route path="/" element={<ProtectedLayouts />}>
               <Route path="create" element={<CreateWavePage />} />
+              <Route
+                path="all-deposit-history"
+                element={<AllDepositHistory />}
+              />
+              <Route path="all-waves" element={<AllWavesPage />} />
+
               <Route path="profile" element={<ProfilePage />}>
                 <Route index element={<PersonalInfo />} />
                 <Route path="security" element={<SecurityPage />} />

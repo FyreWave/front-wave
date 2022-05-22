@@ -42,6 +42,13 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
             </div>
           </div>
         ))}
+        {waves.length !== 0 && (
+          <div className="mt-8">
+            <Link to="/all-waves">
+              <span className="font-medium py-4"> See All Waves </span>
+            </Link>
+          </div>
+        )}
 
         {waves.length === 0 && (
           <div className="text-center py-20">

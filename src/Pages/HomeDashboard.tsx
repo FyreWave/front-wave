@@ -24,15 +24,10 @@ const HomeDashboard = () => {
                 </div>
               </div>
               <div className="Dashboard-tile mt-4">
-                <h1 className="regular-title">Deposit History</h1>
-
                 <DepositHistoryComponent />
               </div>
             </div>
             <div className="Dashboard-tile ">
-              <h1>Your Waves</h1>
-              <hr />
-
               <div className="overflow-y-auto h-[650px]">
                 <WavesComponent />
               </div>

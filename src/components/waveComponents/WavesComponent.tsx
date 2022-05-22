@@ -2,6 +2,7 @@ import WaveList from "./WaveList";
 import useFetch from "../../libs/useFetch";
 import { $axios } from "../../http/http.Service";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const WavesComponent = () => {
   const [isPending, setIsPending] = useState(true);
@@ -11,7 +12,7 @@ const WavesComponent = () => {
 
   function getAllWaves() {
     $axios
-      .get("wave/get-all-waves")
+      .post("wave/get-all-waves", { limit: 5 })
       .then((res: any) => {
         setWaves(res.result);
         setIsPending(false);
@@ -30,7 +31,26 @@ const WavesComponent = () => {
     <div>
       {isError && <div>{isError}</div>}
       {isPending && <div>Is loading...</div>}
-      {waves && <WaveList waves={waves} title="Your Waves" />}
+      {waves && (
+        <div>
+          <div className="flex justify-between">
+            <h1 className="regular-title">Your Waves ({waves.length})</h1>
+            {waves.length !== 0 && (
+              <div>
+                <Link to="/all-waves">
+                  <span className="font-medium py-4">
+                    {" "}
+                    See All Waves{" "}
+                    <i className="fa-solid fa-arrow-right-long"></i>{" "}
+                  </span>
+                </Link>
+              </div>
+            )}
+          </div>
+          <hr />
+          <WaveList waves={waves} title="Your Waves" />
+        </div>
+      )}
     </div>
   );
 };

@@ -218,9 +218,25 @@ const WaveUsers = (props: any) => {
             {wave.waveName}
           </h1>
           <h1 className=" font-bold text-primary-200 font-semibold text-3xl">
-            {wave.targetAmount}
+            ₦ {wave.targetAmount}
           </h1>
-          <progress className="rounded-full" />
+
+          <progress
+            value={
+              ((wave.targetAmount - wave.balance) / wave.targetAmount) * 100
+            }
+            max="100"
+            className="rounded-full w-full"
+          />
+          <div className="flex justify-between">
+            <p className=" font-bold text-white font-semibold text-lg">
+              ₦{wave.targetAmount - wave.balance}
+              <span className="font-light"> raised</span>
+            </p>
+            <p className=" font-bold text-primary-500 font-semibold text-lg">
+              {((wave.targetAmount - wave.balance) / wave.targetAmount) * 100}%
+            </p>
+          </div>
           <p className="text-white font-bold">
             {moment(wave.dueDate).format("MMM Do YYYY")}
           </p>

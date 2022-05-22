@@ -1,9 +1,37 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import React from "react";
+import { $axios } from "../http/http.Service";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 export default function QuickNavigationComponent() {
+  const wave = useSelector((state: RootState) => state.wave.wave) as any;
+
   const navigate = useNavigate();
   const { waveId } = useParams();
+
+  const history = useNavigate();
+
+  const location = useLocation();
+
+  function isDeposit() {
+    return location.pathname !== "/";
+  }
+
+  console.log(wave, "the wave");
+
+  function createTransaction() {
+    console.log(wave);
+    /*     $axios
+      .post(`transaction/create-transaction`, wave)
+      .then((res: any) => {
+        const transactionUuid = res.data.result.uuid;
+        history(`/wave-summary/${transactionUuid}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
+  }
 
   const goBack = () => {
     navigate(-1);
@@ -20,10 +48,15 @@ export default function QuickNavigationComponent() {
 
         {/*action buttons*/}
         <div className="flex gap-x-6">
-          <button className="regular-button">Add Money</button>
-          <Link className="regular-button" to={`/add-money/${waveId}`}>
-            add-money
-          </Link>
+          {isDeposit() ? (
+            <button onClick={createTransaction} className="regular-button">
+              Add money
+            </button>
+          ) : (
+            <Link className="regular-button" to={`/add-money/${waveId}`}>
+              Create Wave
+            </Link>
+          )}
         </div>
         {/*action buttons*/}
       </div>

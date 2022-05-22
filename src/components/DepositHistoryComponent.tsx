@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { $axios } from "../http/http.Service";
 
 const DepositHistoryComponent = () => {
@@ -9,9 +10,8 @@ const DepositHistoryComponent = () => {
 
   function getDeposit() {
     $axios
-      .post("transaction/get-all-deposits")
+      .post("transaction/get-all-deposits", { limit: 5 })
       .then((res: any) => {
-        console.log(res.data);
         setDeposit(res.data);
         setIsPending(false);
       })
@@ -24,12 +24,6 @@ const DepositHistoryComponent = () => {
   useEffect(() => {
     getDeposit();
   }, []);
-
-  const cardNumber = () => {};
-
-  const number = Math.floor(1000 + Math.random() * 9000);
-
-  cardNumber();
 
   const [histories, setHistory] = useState([
     {
@@ -71,6 +65,19 @@ const DepositHistoryComponent = () => {
       {isPending && <div>Is loading...</div>}
       {deposits && (
         <div>
+          <div className="flex justify-between">
+            <h1 className="regular-title">
+              Deposit History ({deposits.length})
+            </h1>
+
+            {deposits.length !== 0 && (
+              <Link to="all-deposit-history" className="font-medium">
+                All Transactions{" "}
+                <i className="fa-solid fa-arrow-right-long"></i>
+              </Link>
+            )}
+          </div>
+
           {deposits.map((deposit: any, index: number) => (
             <div key={index}>
               <div>
@@ -121,6 +128,12 @@ const DepositHistoryComponent = () => {
               </div>
             </div>
           ))}
+
+          {deposits.length !== 0 && (
+            <Link to="all-deposit-history" className="font-medium pt-4">
+              All Transactions <i className="fa-solid fa-arrow-right-long"></i>
+            </Link>
+          )}
 
           {deposits.length === 0 && (
             <div className="text-center py-20">No deposit yet</div>

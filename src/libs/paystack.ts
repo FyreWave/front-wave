@@ -18,7 +18,6 @@ export function PayWithPaystack({ amount, email, uuid }: fnContext) {
     currency: "NGN",
     ref: generateReferenceId(uuid),
     callback(response: any) {
-      console.log(response, "callback");
       $axios
         .post(`/transaction/paystack`, {
           uuid,

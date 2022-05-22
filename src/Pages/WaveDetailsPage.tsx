@@ -8,10 +8,15 @@ import { Tab } from "@headlessui/react";
 import { $axios } from "../http/http.Service";
 import PreloaderComponent from "../components/PreloaderComponent";
 
+import { setWave } from "../redux/wave";
+import { useDispatch } from "react-redux";
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 const WaveDetailsPage = () => {
+  const dispatch = useDispatch();
+
   let [categories] = useState({
     Activities: [],
     "Wave details": [],
@@ -30,6 +35,7 @@ const WaveDetailsPage = () => {
       .get(`wave/get-wave/${waveId}`)
       .then((res: any) => {
         setWave(res.wave);
+        dispatch(setWave(res.wave));
         setIsPending(false);
       })
       .catch((err) => {

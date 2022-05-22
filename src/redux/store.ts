@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./counter";
 
 import userReducer from "./user";
+import waveReducer from "./wave";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     user: userReducer,
+    wave: waveReducer,
   },
 });
 

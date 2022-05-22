@@ -1,6 +1,6 @@
-import logo from "../assets/logo/logo.png";
+import logo from "../../assets/logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { $axios } from "../http/http.Service";
+import { $axios } from "../../http/http.Service";
 import { useState } from "react";
 
 const RegisterPage = () => {
