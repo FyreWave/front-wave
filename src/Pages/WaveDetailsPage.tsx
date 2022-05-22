@@ -7,7 +7,6 @@ import TabView from "../components/waveComponents/TabView";
 import { Tab } from "@headlessui/react";
 import { $axios } from "../http/http.Service";
 import PreloaderComponent from "../components/PreloaderComponent";
-import MakePayment from "../components/waveComponents/MakePayment";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -50,14 +49,12 @@ const WaveDetailsPage = () => {
       });
   }
 
-  function creatTransaction() {
+  function createTransaction() {
     $axios
       .post(`transaction/create-transaction`, wave)
       .then((res: any) => {
-        console.log(res.data.result.reference);
-
-        const waveReference = res.data.result.reference;
-        history(`/wave-summary/${waveReference}`);
+        const transactionUuid = res.data.result.uuid;
+        history(`/wave-summary/${transactionUuid}`);
       })
       .catch((err) => {
         console.log(err);
@@ -76,9 +73,8 @@ const WaveDetailsPage = () => {
         {wave && (
           <div>
             <div>
-              <MakePayment />
               <br />
-              <button onClick={creatTransaction} className="bg-red-500">
+              <button onClick={createTransaction} className="bg-red-500">
                 Check-out
               </button>
             </div>
@@ -86,12 +82,6 @@ const WaveDetailsPage = () => {
             <div>
               <div className="">
                 <div className="flex items-center">
-                  <input
-                    value="https://www.fyrewave.com/api/payment/payment-callback"
-                    className="bg-gray-100 m-4 py-1 text-green-600"
-                    type="text"
-                    disabled
-                  />
                   <button className="rounded-full border-2 border-green-200 h-10 w-10 hover:">
                     <i className="fa-regular fa-copy text-green-500" />
                   </button>

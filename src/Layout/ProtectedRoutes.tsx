@@ -39,7 +39,7 @@ const ProtectedRoutes = () => {
               </Route>
               <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
               <Route
-                path="wave-summary/:reference"
+                path="wave-summary/:transactionUuid"
                 element={<WaveSummaryPage />}
               />
               <Route path="add-money/:waveId" element={<AddMoneyPage />} />

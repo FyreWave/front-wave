@@ -1,18 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface UserState {
-  user: {
-    email: string;
-    lastSeen: number;
-    username: string;
-  } | null;
+  user:
+    | {
+        email: string;
+        lastSeen: string;
+        username: string;
+      }
+    | {};
   isLoading: boolean;
   isError: boolean;
   isLoggedIn: boolean;
 }
 
 const initialState: UserState = {
-  user: null,
+  user: {
+    email: "",
+    lastSeen: "",
+    username: "",
+  },
   isLoggedIn: false,
   isLoading: false,
   isError: false,

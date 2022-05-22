@@ -42,6 +42,12 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
             </div>
           </div>
         ))}
+
+        {waves.length === 0 && (
+          <div className="text-center py-20">
+            Join a wave or <br /> <button className="">create a wave</button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { $axios } from "../http/http.Service";
 
 const DepositHistoryComponent = () => {
+  const [isPending, setIsPending] = useState(true);
+  const [isError, setError] = useState(null);
+
+  const [deposits, setDeposit] = useState([]);
+
+  function getDeposit() {
+    $axios
+      .post("transaction/get-all-deposits")
+      .then((res: any) => {
+        console.log(res.data);
+        setDeposit(res.data);
+        setIsPending(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setIsPending(false);
+      });
+  }
+
+  useEffect(() => {
+    getDeposit();
+  }, []);
+
   const cardNumber = () => {};
 
   const number = Math.floor(1000 + Math.random() * 9000);
@@ -43,37 +67,66 @@ const DepositHistoryComponent = () => {
   ]);
   return (
     <div className="my-b">
-      <div>
-        {histories.map((history, index) => (
-          <div key={index}>
-            <div>
-              <div className="py-6">
-                <div className="flex justify-between">
-                  <div className="flex">
-                    <div className="bg-primary-500 p-1 rounded-full w-12 h-12 flex justify-center mr-2">
-                      <div className="text-center">
-                        <p className="text-lg text-white font-bold">23</p>
-                        <p className="text-sm text-white -mt-2">mar</p>
+      {isError && <div>{isError}</div>}
+      {isPending && <div>Is loading...</div>}
+      {deposits && (
+        <div>
+          {deposits.map((deposit: any, index: number) => (
+            <div key={index}>
+              <div>
+                <div className="py-6">
+                  <div className="flex justify-between">
+                    <div className="flex">
+                      <div className="bg-primary-500 p-1 rounded-full w-12 h-12 flex justify-center mr-2">
+                        <div className="text-center">
+                          <p className="text-lg text-white font-bold">
+                            {" "}
+                            {new Date(
+                              deposit.paystack.paid_at
+                            ).toLocaleDateString("default", {
+                              day: "numeric",
+                            })}
+                          </p>
+                          <p className="text-sm text-white -mt-2">
+                            {new Date(
+                              deposit.paystack.paid_at
+                            ).toLocaleDateString("default", {
+                              month: "short",
+                            })}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex">
+                          {deposit.paystack.authorization.card_type ||
+                            deposit.paystack.authorization.bank}
+                          <span>
+                            {deposit.paystack.authorization.channel !==
+                              "bank" && <div> ***** ****</div>}
+                          </span>
+                          {deposit.paystack.authorization.last4}
+                        </div>
+
+                        <h1 className="font-semibold text-xs text-gray-500">
+                          {deposit.wave.waveName}
+                        </h1>
                       </div>
                     </div>
                     <div>
-                      <h1>
-                        {number} ***** **** {number}
-                      </h1>
-                      <h1 className="font-semibold text-xs text-gray-500">
-                        {history.title}
-                      </h1>
+                      <p className="font-bold text-xl">₦ {deposit.amount}</p>
                     </div>
-                  </div>
-                  <div>
-                    <p className="font-bold">&#8358;{history.goal}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+
+          {deposits.length === 0 && (
+            <div className="text-center py-20">No deposit yet</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

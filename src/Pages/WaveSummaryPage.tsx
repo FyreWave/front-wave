@@ -6,70 +6,41 @@ import { $axios } from "../http/http.Service";
 import { loadScriptAsync, PayWithPaystack } from "../libs/paystack";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-
 loadScriptAsync("https://js.paystack.co/v1/inline.js").then(() => {});
-
-interface transactionTypings {
-  _id: string;
-  updatedAt: string;
-  createdAt: "2022-05-10T04:41:45.592Z";
-  reference: "b5f611b1-4614-4481-9aa9-fdf372d64835";
-  paid: false;
-  shortId: "2Z8br";
-  amount: 0;
-  paymentMethod: "card";
-  waveId: "6279ed098fb3e9702ba8add2";
-  ownerId: "6279e4d38fb3e9702ba8adcf";
-  status: "created";
-  wave: {
-    _id: "6279ed098fb3e9702ba8add2";
-    updatedAt: "2022-05-10T04:41:45.592Z";
-    createdAt: "2022-05-10T04:41:45.592Z";
-    waveName: string;
-    waveDescription: string;
-    targetAmount: number;
-    dueDate: "2022-05-21T00:00:00.000Z";
-    waveType: string;
-    canWithdraw: false;
-    ownerId: "6279e4d38fb3e9702ba8adcf";
-    slug: "buy-house-for-anthony-h7jaqu";
-  };
-  waveCreator: {
-    _id: "6279e4d38fb3e9702ba8adcf";
-    updatedAt: "2022-05-10T04:06:43.525Z";
-    createdAt: "2022-05-10T04:06:43.525Z";
-    password: "$2b$10$XyWHkCqyxy3EF0rKNtpgyejLxg9JtA80hi2WzX8WSCo2teWYbre62";
-    email: "anthony@gmail.com";
-    mobile: "12345678";
-    lastSeenAt: "2022-05-10T04:07:06.429Z";
-  };
-}
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
+
 const WaveSummaryPage = () => {
-  const user = useSelector((state: RootState) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user) as any;
 
   const params = useParams();
-  const reference = params.reference;
+  const transactionUuid = params.transactionUuid;
   const history = useNavigate();
 
   const [isPending, setIsPending] = useState(true);
   const [isError, setError] = useState(null);
 
-  const [transaction, setTransaction] = useState({});
+  const [transaction, setTransaction] = useState({
+    amount: 0,
+    email: "",
+    paymentMethod: "card",
+    reference: "",
+    wave: { waveName: "", targetAmount: "" },
+  }) as any;
 
   const [paymentData, setPaymentData] = useState({
-    amount: "0.00",
+    amount: 0,
     email: user?.email,
     mobile: "",
     paymentMethod: "card",
-  });
+  }) as any;
 
   function getTransaction() {
+    console.log(transactionUuid);
     $axios
-      .get(`transaction/get-transaction/${reference}`)
+      .get(`transaction/get-transaction/${transactionUuid}`)
 
       .then((res: any) => {
         setTransaction(res.data.result[0]);
@@ -78,7 +49,7 @@ const WaveSummaryPage = () => {
 
         setIsPending(false);
       })
-      .finally(() => {})
+
       .catch((err) => {
         setError(err);
         setIsPending(false);
@@ -86,17 +57,20 @@ const WaveSummaryPage = () => {
       });
   }
 
-  function handleSubmit(e: any) {
+  function updateTransaction(e: any) {
     e.preventDefault();
 
     console.log(paymentData);
     $axios
       .put("/transaction/update-transaction", {
-        reference: reference,
+        uuid: transactionUuid,
         paymentData,
       })
       .then((res: any) => {
         console.log(res);
+      })
+      .finally(() => {
+        getTransaction();
       })
       .catch((err) => {
         console.log(err);
@@ -111,7 +85,7 @@ const WaveSummaryPage = () => {
     PayWithPaystack({
       amount: transaction?.amount,
       email: user?.email,
-      uuid: transaction?.reference,
+      uuid: transaction?.uuid,
     });
   }
 
@@ -134,18 +108,10 @@ const WaveSummaryPage = () => {
               <div>{transaction?.wave?.waveName} </div>
               <div>Target amount ::{transaction?.wave?.targetAmount} </div>
               <div>Amount you are adding:{transaction?.amount} </div>
-              <div>reference:{transaction?.reference} </div>
-              {/*
-              <div>{transaction.paymentMethod} </div>
-              <div>{transaction.amount}</div>*/}
+              <div>reference:{transaction?.uuid} </div>
             </div>
             <div>
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-6"
-                action="#"
-                method="POST"
-              >
+              <form onSubmit={updateTransaction}>
                 <div>
                   <label
                     htmlFor="mobile"

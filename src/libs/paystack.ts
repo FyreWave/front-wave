@@ -15,14 +15,17 @@ export function PayWithPaystack({ amount, email, uuid }: fnContext) {
     channels: ["card", "bank", "ussd", "bank_transfer"],
     amount: Number(amount) * 100,
     email: email,
-    ref: uuid,
+    currency: "NGN",
+    ref: generateReferenceId(uuid),
     callback(response: any) {
+      console.log(response, "callback");
       $axios
-        .post(`/transaction/payment-callback`, {
+        .post(`/transaction/paystack`, {
+          uuid,
           reference: response.reference,
         })
-        .catch((e) => e);
-      // .finally(() => window.location.reload());
+        .catch((e) => e)
+        .finally(() => window.location.reload());
     },
   } as Record<string, any>);
   handler.openIframe();

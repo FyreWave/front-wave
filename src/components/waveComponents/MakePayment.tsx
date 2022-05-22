@@ -5,11 +5,11 @@ export default function MakePayment() {
   loadScriptAsync("https://js.paystack.co/v1/inline.js").then(() => {});
 
   function pay_with_paystack() {
-    PayWithPaystack({
-      amount: 9000,
-      email: "auser@gmail.com",
-      uuid: "123456789",
-    });
+    // PayWithPaystack({
+    //   amount: 9000,
+    //   email: "auser@gmail.com",
+    //   uuid: "123456789",
+    // });
   }
 
   return (
