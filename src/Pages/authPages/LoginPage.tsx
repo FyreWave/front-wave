@@ -39,12 +39,7 @@ const RegisterPage = () => {
                 <img className="mx-auto h-12 w-auto" src={logo} />
               </Link>
             </div>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              action="#"
-              method="POST"
-            >
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="mobile"

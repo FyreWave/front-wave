@@ -207,9 +207,10 @@ const directory = {
   ],
 } as any;
 
-const WaveUsers = (props: any) => {
+const WaveMembers = (props: any) => {
   const wave = props.wave;
   const title = props.title;
+
   return (
     <div className="h-[800px] p-10">
       <section>
@@ -317,4 +318,4 @@ const WaveUsers = (props: any) => {
   );
 };
 
-export default WaveUsers;
+export default WaveMembers;

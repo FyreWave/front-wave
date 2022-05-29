@@ -1,7 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import WaveUsers from "../components/waveComponents/WaveUsers";
-import WaveActivities from "../components/waveComponents/WaveActivities";
+import WaveMembers from "../components/waveComponents/WaveMembers";
+import WaveSummary from "../components/waveComponents/WaveSummary";
+// import WaveActivities from "../components/waveComponents/WaveActivities";
 import { useEffect, useState } from "react";
 import TabView from "../components/waveComponents/TabView";
 import { Tab } from "@headlessui/react";
@@ -10,6 +11,8 @@ import PreloaderComponent from "../components/PreloaderComponent";
 
 import { setWave } from "../redux/wave";
 import { useDispatch } from "react-redux";
+import WaveActivities from "../components/waveComponents/WaveActivities";
+import { WavesMemberTypings } from "../types/modelsTypings";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -17,10 +20,6 @@ function classNames(...classes: string[]) {
 const WaveDetailsPage = () => {
   const dispatch = useDispatch();
 
-  let [categories] = useState({
-    Activities: [],
-    "Wave details": [],
-  });
   const params = useParams();
   const waveId = params.waveId;
   const history = useNavigate();
@@ -28,14 +27,17 @@ const WaveDetailsPage = () => {
   const [isPending, setIsPending] = useState(true);
   const [isError, setError] = useState(null);
 
-  const [wave, setWave] = useState([]);
+  const [waveSummary, setWaveSummary] = useState<WavesMemberTypings>({
+    wavers: [],
+    wave: {},
+    waveActivities: [],
+  });
 
-  function getWave() {
+  function getWaveSummary() {
     $axios
-      .get(`wave/get-wave/${waveId}`)
+      .get(`wave/get-wave-summary/${waveId}`)
       .then((res: any) => {
-        setWave(res.wave);
-        dispatch(setWave(res.wave));
+        setWaveSummary(res);
         setIsPending(false);
       })
       .catch((err) => {
@@ -46,7 +48,7 @@ const WaveDetailsPage = () => {
 
   function generateLink() {
     $axios
-      .post(`link/generate-link/`, wave)
+      .post(`link/generate-link/`, waveSummary)
       .then((res: any) => {
         console.log(res);
       })
@@ -55,9 +57,9 @@ const WaveDetailsPage = () => {
       });
   }
 
-  function createTransaction() {
+  function makePayment() {
     $axios
-      .post(`transaction/create-transaction`, wave)
+      .post(`transaction/create-transaction`, waveSummary.wave)
       .then((res: any) => {
         const transactionUuid = res.data.result.uuid;
         history(`/wave-summary/${transactionUuid}`);
@@ -68,7 +70,7 @@ const WaveDetailsPage = () => {
   }
 
   useEffect(() => {
-    getWave();
+    getWaveSummary();
   }, []);
 
   return (
@@ -76,11 +78,11 @@ const WaveDetailsPage = () => {
       <div>
         {isPending && <div>Loading...</div>}
         {isError && <div>Error</div>}
-        {wave && (
+        {waveSummary && (
           <div>
             <div>
               <br />
-              <button onClick={createTransaction} className="bg-red-500">
+              <button onClick={makePayment} className="bg-red-500">
                 Check-out
               </button>
             </div>
@@ -109,15 +111,16 @@ const WaveDetailsPage = () => {
                 </div>
                 <div className="">
                   <div>
-                    <div className="bg-secondary-500">
-                      <WaveUsers wave={wave} />
+                    <div className="bg-secondary-500 p-8">
+                      <WaveSummary wave={waveSummary.wave} />
+                      <WaveMembers wavers={waveSummary.wavers} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             {/*  mobile view area*/}
-            <div className="flex justify-center md:hidden ">
+            {/*  <div className="flex justify-center md:hidden ">
               <div className="w-full max-w-md px-2 py-16 sm:px-0">
                 <Tab.Group defaultIndex={1}>
                   <Tab.Panels className="mt-2 bg-white">
@@ -152,7 +155,7 @@ const WaveDetailsPage = () => {
                   </Tab.List>
                 </Tab.Group>
               </div>
-            </div>
+            </div> */}
             {/*  mobile view area*/}
           </div>
         )}

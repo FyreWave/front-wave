@@ -17,6 +17,9 @@ export default function QuickNavigationComponent() {
   function isDeposit() {
     return location.pathname !== "/";
   }
+  function isHomePage() {
+    return location.pathname !== "/";
+  }
 
   console.log(wave, "the wave");
 
@@ -48,16 +51,15 @@ export default function QuickNavigationComponent() {
 
         {/*action buttons*/}
         <div className="flex gap-x-6">
-          {isDeposit() ? (
-            <button onClick={createTransaction} className="regular-button">
-              Add money
-            </button>
-          ) : (
-            <Link className="regular-button" to={`/add-money/${waveId}`}>
-              Create Wave
-            </Link>
-          )}
+          <button onClick={createTransaction} className="regular-button">
+            Add money
+          </button>
+
+          <Link className="regular-button" to="/create">
+            Create Wave
+          </Link>
         </div>
+
         {/*action buttons*/}
       </div>
     </>

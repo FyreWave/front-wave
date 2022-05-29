@@ -13,12 +13,51 @@ export type WaveDataState = {
   isLoading: boolean;
 };
 
-export type WavesDataType = {
-  title: string;
-  goal: string;
+export interface ActivityType {
+  name: string;
+  amount?: string;
+  type: string;
   date: string;
-  id: number;
-};
+  invitee?: string;
+}
+interface UserTypings {
+  email: string;
+  lastSeenAt: string;
+}
+interface WaveTypings {
+  balance: number;
+  canWithdraw: boolean;
+  createdAt: string;
+  dueDate: string;
+  ownerId: string;
+  slug: string;
+  targetAmount: number;
+  updatedAt: string;
+  waveDescription: string;
+  waveName: string;
+  waveType: string;
+  _id: string;
+}
+
+interface WaveTypings {
+  waveName: string;
+  targetAmount: number;
+  balance: number;
+  dueDate: string;
+  canWithdraw: boolean;
+  createdAt: string;
+  ownerId: string;
+  slug: string;
+  updatedAt: string;
+  waveDescription: string;
+  waveType: string;
+  _id: string;
+}
+export interface WavesMemberTypings {
+  wave: any;
+  waveActivities: ActivityType[];
+  wavers: UserTypings[];
+}
 
 export interface transactionTypings {
   _id: string;

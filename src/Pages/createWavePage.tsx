@@ -39,19 +39,20 @@ const createWavePage = () => {
     // .catch((err) => console.log(err));
   };
 
+  function processData(data: any, space: number = 2) {
+    if (typeof data === "object") {
+      return JSON.stringify(data, null, space).trim();
+    } else {
+      return data;
+    }
+  }
+
   return (
     <div>
       <h2>Create a new Wave</h2>
+      {processData(waveData, 5)}
+      <pre></pre>
 
-      {waveData.waveName}
-      <br />
-      {waveData.waveDescription}
-      <br />
-      {waveData.targetAmount}
-      <br />
-      {waveData.dueDate}
-      <br />
-      {waveData.waveType}
       <div className="flex justify-center">
         <div className="bg-white w-full py-32 ">
           <div className="flex justify-center">

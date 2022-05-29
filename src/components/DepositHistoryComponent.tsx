@@ -117,6 +117,7 @@ const DepositHistoryComponent = () => {
 
                         <h1 className="font-semibold text-xs text-gray-500">
                           {deposit.wave.waveName}
+                          {deposit.paystack.authorization.channel}
                         </h1>
                       </div>
                     </div>

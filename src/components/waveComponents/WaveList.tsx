@@ -1,9 +1,9 @@
-import { WavesDataType } from "../../types/modelsTypings";
+// import { WavesDataType } from "../../types/modelsTypings";
 
 import { Link } from "react-router-dom";
 import moment from "moment/moment";
 
-const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
+const WaveList = (props: any) => {
   const waves = props.waves;
   const title = props.title;
   return (
@@ -15,27 +15,25 @@ const WaveList = (props: { waves: WavesDataType[]; title: any }) => {
               <div className="py-4">
                 <div className="flex justify-between">
                   <div>
-                    <Link to={`/view-wave/${wave.slug}`}>
+                    <Link to={`/view-wave/${wave.wave.slug}`}>
                       <h2 className="text-xl font-bold capitalize">
-                        {wave.waveName}
+                        {wave.wave.waveName}
                       </h2>
-                      <p className="text-xs ">{wave.waveDescription}</p>
+                      <p className="text-md ">{wave.wave.waveDescription}</p>
                     </Link>
                     <p className="font-bold py-1 text-sm goal-color">
-                      Goal: &#8358;{wave.targetAmount}
+                      Goal: &#8358;{wave.wave.targetAmount}
                     </p>
-                    <p className="text-xs text-gray-500 font-bold">
-                      Due: {moment(wave.dueDate).format("MMM Do YYYY")}
-                      <span className="text-xs italic">
-                        {" "}
-                        ({moment(wave.dueDate, "YYYYMMDD").fromNow()})
-                      </span>
-                    </p>
+
+                    <div></div>
                   </div>
                   <div>
-                    <button className="regular-button">
+                    <Link
+                      to={`/view-wave/${wave.slug}`}
+                      className="regular-button"
+                    >
                       <i className="fa-solid fa-arrow-right"></i>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

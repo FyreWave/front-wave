@@ -6,6 +6,7 @@ import PersonalInfo from "../Pages/profile/PersonalInfo";
 import SecurityPage from "../Pages/profile/SecurityPage";
 import RegisterPage from "../Pages/authPages/RegisterPage";
 import WaveDetailsPage from "../Pages/WaveDetailsPage";
+import JoinWavePage from "../Pages/JoinWavePage";
 import AddMoneyPage from "../Pages/AddMoneyPage";
 import React from "react";
 import HeaderNavigation from "./HeaderNavigation";
@@ -45,7 +46,9 @@ const ProtectedRoutes = () => {
                 <Route path="security" element={<SecurityPage />} />
                 <Route path="personal" element={<PersonalInfo />} />
               </Route>
+
               <Route path="view-wave/:waveId" element={<WaveDetailsPage />} />
+              <Route path="join-wave/:waveId" element={<JoinWavePage />} />
               <Route
                 path="wave-summary/:transactionUuid"
                 element={<WaveSummaryPage />}
