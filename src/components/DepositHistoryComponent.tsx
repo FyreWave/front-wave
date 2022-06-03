@@ -114,10 +114,8 @@ const DepositHistoryComponent = () => {
                           </span>
                           {deposit.paystack.authorization.last4}
                         </div>
-
                         <h1 className="font-semibold text-xs text-gray-500">
                           {deposit.wave.waveName}
-                          {deposit.paystack.authorization.channel}
                         </h1>
                       </div>
                     </div>
@@ -129,13 +127,11 @@ const DepositHistoryComponent = () => {
               </div>
             </div>
           ))}
-
           {deposits.length !== 0 && (
             <Link to="all-deposit-history" className="font-medium pt-4">
               All Transactions <i className="fa-solid fa-arrow-right-long"></i>
             </Link>
           )}
-
           {deposits.length === 0 && (
             <div className="text-center py-20">No deposit yet</div>
           )}

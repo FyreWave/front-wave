@@ -60,7 +60,7 @@ const WaveSummaryPage = () => {
   function updateTransaction(e: any) {
     e.preventDefault();
 
-    console.log(paymentData);
+    console.log(paymentData, "payment data");
     $axios
       .put("/transaction/update-transaction", {
         uuid: transactionUuid,

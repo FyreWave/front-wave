@@ -26,7 +26,7 @@ const ProtectedRoutes = () => {
   return (
     <>
       <HeaderNavigation />
-      <div className="container mx-auto pt-10 px-40">
+      <div className="container mx-auto pt-10 px-2 lg:px-40">
         <div className="pt-10 pb-4">
           <QuickNavigationComponent />
         </div>
