@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { $axios } from "../http/http.Service";
+import { formatNumber } from "../libs/utils";
 
 const createWavePage = () => {
   // console.log(import.meta.env.DEV);
@@ -8,9 +9,9 @@ const createWavePage = () => {
 
   //single input
   const [waveData, setWaveData] = useState({
-    waveName: "Buy car for Anthony",
-    waveDescription: "this is a description of why sam need money",
-    targetAmount: "9920000",
+    waveName: "",
+    waveDescription: "",
+    targetAmount: 0,
     dueDate: "2022-05-21",
     waveType: "group",
   });
@@ -27,36 +28,31 @@ const createWavePage = () => {
     $axios
       .post("wave/make-wave", waveData)
       .then((res) => {
-        console.log(res);
         setIsPending(false);
         history("/");
       })
       .catch((err) => {
-        console.log(err);
         setIsPending(false);
       });
-
-    // .catch((err) => console.log(err));
   };
-
-  function processData(data: any, space: number = 2) {
-    if (typeof data === "object") {
-      return JSON.stringify(data, null, space).trim();
-    } else {
-      return data;
-    }
-  }
 
   return (
     <div>
-      <h2>Create a new Wave</h2>
-      {processData(waveData, 5)}
-      <pre></pre>
-
       <div className="flex justify-center">
         <div className="bg-white w-full py-32 ">
           <div className="flex justify-center">
-            <div className="w-[450px] px-8">
+            <div className="w-[450px] lg:w-1/2 px-8">
+              <section className="shadow-sm border rounded-sm p-1">
+                <h1 className="text-primary-500 font-medium text-lg">
+                  {waveData.waveName}
+                </h1>
+                <p className="normal-case"> {waveData.waveDescription}</p>
+                <p className="normal-case"> {waveData.dueDate}</p>
+                <p className="normal-case text-primary-500">
+                  ₦ {waveData.targetAmount}
+                </p>
+                <p className="normal-case"> {waveData.waveType}</p>
+              </section>
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <br />

@@ -11,7 +11,7 @@ class WaveActivities extends Component<any, StateType> {
     this.state = {
       activities: [
         {
-          name: "e-money",
+          name: "e-moneyee",
           amount: "345,000",
           type: "deposited",
           date: "25-12-2022",

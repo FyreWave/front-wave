@@ -21,10 +21,11 @@ export default function QuickNavigationComponent() {
     return location.pathname !== "/";
   }
 
-  console.log(wave, "the wave");
+  function isCreateWave() {
+    return location.pathname === "/create";
+  }
 
   function createTransaction() {
-    console.log(wave);
     /*     $axios
       .post(`transaction/create-transaction`, wave)
       .then((res: any) => {
@@ -44,23 +45,27 @@ export default function QuickNavigationComponent() {
     <>
       <div className="flex justify-between items-center">
         <div>
-          <button onClick={goBack} className="text-2xl">
-            <i className="fa-solid fa-arrow-left-long "></i> Back{" "}
-          </button>
+          {!isCreateWave() && (
+            <button onClick={goBack} className="text-2xl">
+              <i className="fa-solid fa-arrow-left-long "></i> Back{" "}
+            </button>
+          )}
+          {isCreateWave() && (
+            <h1 className="text-3xl font-bold">Create Wave</h1>
+          )}
         </div>
 
-        {/*action buttons*/}
-        <div className="flex gap-x-6">
-          <button onClick={createTransaction} className="regular-button">
-            Add money
-          </button>
+        {!isCreateWave() && (
+          <div className="flex gap-x-6">
+            <button onClick={createTransaction} className="regular-button">
+              Add money
+            </button>
 
-          <Link className="regular-button" to="/create">
-            Create Wave
-          </Link>
-        </div>
-
-        {/*action buttons*/}
+            <Link className="regular-button" to="/create">
+              Create Wave
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

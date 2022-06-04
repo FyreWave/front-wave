@@ -50,7 +50,11 @@ const WaveList = (props: any) => {
 
         {waves.length === 0 && (
           <div className="text-center py-20">
-            Join a wave or <br /> <button className="">create a wave</button>
+            Join a wave or <br />
+            <br />{" "}
+            <Link to="/create" className="text-2xl  text-primary-500 ">
+              create a wave
+            </Link>
           </div>
         )}
       </div>

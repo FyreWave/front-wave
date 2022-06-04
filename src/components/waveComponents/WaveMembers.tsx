@@ -7,18 +7,21 @@ const WaveMembers = (props: any) => {
   const wavers = props.wavers;
 
   return (
-    <div className="text-white bg-red-500">
-      <h1 className="">All users here</h1>
+    <div className="text-white">
       <div>
         {wavers.map((wave: any, index: number) => (
           <div key={index}>
-            {/* <div>{JSON.stringify(wave.user?.username)}</div> */}
-            <div>{wave.user?.username}</div>
+            <p>Wave Members</p>
+            <div className="flex justify-between">
+              <div>{wave.user?.username}</div>
+              <div>Item </div>
+              <div>Item </div>
+            </div>
           </div>
         ))}
       </div>
 
-      <div>{wavers.length !== 0 && <div>No members yet</div>}</div>
+      <div>{wavers.length === 0 && <div>No members yet</div>}</div>
     </div>
   );
 };
