@@ -4,33 +4,11 @@ import { $axios } from "../../http/http.Service";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const WavesComponent = () => {
-  const [isPending, setIsPending] = useState(true);
-  const [isError, setError] = useState(null);
-
-  const [waves, setWaves] = useState([]);
-
-  function getAllWaves() {
-    $axios
-      .post("wave/get-all-waves", { limit: 5 })
-      .then((res: any) => {
-        setWaves(res.result);
-        setIsPending(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setIsPending(false);
-      });
-  }
-
-  useEffect(() => {
-    getAllWaves();
-  }, []);
+const WavesComponent = (props: any) => {
+  const waves = props.waves;
 
   return (
     <div>
-      {isError && <div>{isError}</div>}
-      {isPending && <div>Is loading...</div>}
       {waves && (
         <div>
           <div className="flex justify-between">

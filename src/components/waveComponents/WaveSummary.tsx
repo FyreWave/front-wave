@@ -19,7 +19,7 @@ class WaveSummary extends Component<any, any> {
             <h1 className="text-white text-2xl font-bold capitalize">
               {wave.waveName}
             </h1>
-            <h1 className=" font-bold text-primary-200 font-semibold text-3xl">
+            <h1 className=" font-bold text-primary-200  text-3xl">
               ₦ {wave.targetAmount}
             </h1>
 
@@ -29,16 +29,20 @@ class WaveSummary extends Component<any, any> {
               className="rounded-full w-full"
             />
             <div className="flex justify-between">
-              <p className=" font-bold text-white font-semibold text-lg">
+              <p className=" font-bold text-white text-lg">
                 ₦{wave.targetAmount - wave.balance}
                 <span className="font-light"> raised</span>
               </p>
-              <p className=" font-bold text-primary-500 font-semibold text-lg">
+              <p className=" font-bold text-primary-500  text-lg">
                 {wave.balance_percentage}%
               </p>
             </div>
             <p className="text-white font-bold">
               {moment(wave.dueDate).format("MMM Do YYYY")}
+            </p>
+
+            <p className="text-primary-500">
+              created by: {wave.createdBy?.username}
             </p>
 
             <div className="flex items-center gap-x-4">

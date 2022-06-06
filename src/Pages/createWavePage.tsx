@@ -11,7 +11,7 @@ const createWavePage = () => {
   const [waveData, setWaveData] = useState({
     waveName: "",
     waveDescription: "",
-    targetAmount: 0,
+    targetAmount: "0",
     dueDate: "2022-05-21",
     waveType: "group",
   });

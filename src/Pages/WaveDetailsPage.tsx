@@ -30,7 +30,7 @@ const WaveDetailsPage = () => {
   const [waveSummary, setWaveSummary] = useState<WavesMemberTypings>({
     wavers: [],
     wave: {},
-    waveActivities: [],
+    activities: [],
   });
 
   function getWaveSummary() {
@@ -39,6 +39,7 @@ const WaveDetailsPage = () => {
       .then((res: any) => {
         setWaveSummary(res);
         setIsPending(false);
+        dispatch(setWave(res.wave));
       })
       .catch((err) => {
         setError(err);
@@ -64,6 +65,7 @@ const WaveDetailsPage = () => {
         const transactionUuid = res.data.result.uuid;
         history(`/wave-summary/${transactionUuid}`);
       })
+      
       .catch((err) => {
         console.log(err);
       });
@@ -107,7 +109,7 @@ const WaveDetailsPage = () => {
             <div className="hidden md:block">
               <div className="grid md:grid-cols-2">
                 <div className="">
-                  <WaveActivities />
+                  <WaveActivities activities={waveSummary.activities} />
                 </div>
                 <div className="">
                   <div>

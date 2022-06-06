@@ -15,14 +15,14 @@ const WaveList = (props: any) => {
               <div className="py-4">
                 <div className="flex justify-between">
                   <div>
-                    <Link to={`/view-wave/${wave.wave.slug}`}>
+                    <Link to={`/view-wave/${wave.slug}`}>
                       <h2 className="text-xl font-bold capitalize">
-                        {wave.wave.waveName}
+                        {wave.waveName}
                       </h2>
-                      <p className="text-md ">{wave.wave.waveDescription}</p>
+                      <p className="text-md ">{wave.waveDescription}</p>
                     </Link>
                     <p className="font-bold py-1 text-sm goal-color">
-                      Goal: &#8358;{wave.wave.targetAmount}
+                      Goal: &#8358;{wave.targetAmount}
                     </p>
 
                     <div></div>

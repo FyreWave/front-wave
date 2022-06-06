@@ -16,6 +16,7 @@ export type WaveDataState = {
 export interface ActivityType {
   name: string;
   amount?: string;
+  from: string;
   type: string;
   date: string;
   invitee?: string;
@@ -55,7 +56,7 @@ interface WaveTypings {
 }
 export interface WavesMemberTypings {
   wave: any;
-  waveActivities: ActivityType[];
+  activities: ActivityType[];
   wavers: UserTypings[];
 }
 

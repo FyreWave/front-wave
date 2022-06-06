@@ -2,28 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { $axios } from "../http/http.Service";
 
-const DepositHistoryComponent = () => {
-  const [isPending, setIsPending] = useState(true);
-  const [isError, setError] = useState(null);
-
-  const [deposits, setDeposit] = useState([]);
-
-  function getDeposit() {
-    $axios
-      .post("transaction/get-all-deposits", { limit: 5 })
-      .then((res: any) => {
-        setDeposit(res.data);
-        setIsPending(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setIsPending(false);
-      });
-  }
-
-  useEffect(() => {
-    getDeposit();
-  }, []);
+const DepositHistoryComponent = (props: any) => {
+  const transactions = props.transactions;
 
   const [histories, setHistory] = useState([
     {
@@ -61,16 +41,14 @@ const DepositHistoryComponent = () => {
   ]);
   return (
     <div className="my-b">
-      {isError && <div>{isError}</div>}
-      {isPending && <div>Is loading...</div>}
-      {deposits && (
+      {transactions && (
         <div>
           <div className="flex justify-between">
             <h1 className="regular-title">
-              Deposit History ({deposits.length})
+              Deposit History ({transactions.length})
             </h1>
 
-            {deposits.length !== 0 && (
+            {transactions.length !== 0 && (
               <Link to="all-deposit-history" className="font-medium">
                 All Transactions{" "}
                 <i className="fa-solid fa-arrow-right-long"></i>
@@ -78,7 +56,7 @@ const DepositHistoryComponent = () => {
             )}
           </div>
 
-          {deposits.map((deposit: any, index: number) => (
+          {transactions.map((deposit: any, index: number) => (
             <div key={index}>
               <div>
                 <div className="py-6">
@@ -127,12 +105,12 @@ const DepositHistoryComponent = () => {
               </div>
             </div>
           ))}
-          {deposits.length !== 0 && (
+          {transactions.length !== 0 && (
             <Link to="all-deposit-history" className="font-medium pt-4">
               All Transactions <i className="fa-solid fa-arrow-right-long"></i>
             </Link>
           )}
-          {deposits.length === 0 && (
+          {transactions.length === 0 && (
             <div className="text-center py-20">No deposit yet</div>
           )}
         </div>

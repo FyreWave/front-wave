@@ -15,7 +15,6 @@ const RegisterPage = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    console.log(loginData);
     $axios
       .post("/auth/login", loginData)
       .then((res: any) => {
