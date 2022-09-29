@@ -15,7 +15,6 @@ const HomeDashboard = () => {
     $axios
       .post("wave/get-dashboard-summary", { limit: 5 })
       .then((res: any) => {
-        console.log(res.result);
         setSummary(res.result);
         setIsPending(false);
       })
@@ -33,6 +32,7 @@ const HomeDashboard = () => {
     <div>
       {isError && <div>{isError}</div>}
       {isPending && <div>Is loading...</div>}
+
       {summary && (
         <div className="">
           <div className="">
@@ -44,7 +44,15 @@ const HomeDashboard = () => {
 
                     <h1 className="text-3xl ">
                       {" "}
-                      {Number(summary?.totalDeposit?.total).toLocaleString()}
+                      {isNaN(Number(summary?.totalDeposit?.total)) ? (
+                        <p>No savings yet ...</p>
+                      ) : (
+                        <p>
+                          {Number(
+                            summary?.totalDeposit?.total
+                          ).toLocaleString()}
+                        </p>
+                      )}
                     </h1>
                   </div>
                 </div>

@@ -37,9 +37,9 @@ const WaveDetailsPage = () => {
     $axios
       .get(`wave/get-wave-summary/${waveId}`)
       .then((res: any) => {
-        setWaveSummary(res);
+        setWaveSummary(res.result);
         setIsPending(false);
-        dispatch(setWave(res.wave));
+        dispatch(setWave(res.result.wave));
       })
       .catch((err) => {
         setError(err);
@@ -65,7 +65,7 @@ const WaveDetailsPage = () => {
         const transactionUuid = res.data.result.uuid;
         history(`/wave-summary/${transactionUuid}`);
       })
-      
+
       .catch((err) => {
         console.log(err);
       });
